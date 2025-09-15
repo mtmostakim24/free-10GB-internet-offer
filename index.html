@@ -3,236 +3,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>১০ GB ফ্রি ইন্টারনেট</title>
-
-  <!-- উপরের Ad -->
-  <script type="text/javascript">
-    atOptions = {
-      'key' : '9c2d01b216d8bdb1964ee7c3769492f0',
-      'format' : 'iframe',
-      'height' : 50,
-      'width' : 320,
-      'params' : {}
-    };
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/9c2d01b216d8bdb1964ee7c3769492f0/invoke.js"></script>
-
+  <title>লোড হচ্ছে...</title>
   <style>
+    /* Full Screen Gradient Background */
     body {
-      background-color: #1e1e1e;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
+      height: 100vh;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-    }
-
-    .container {
-      background-color: #2c2c2c;
-      border-radius: 12px;
-      padding: 25px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 0 15px rgba(0, 255, 127, 0.3);
-      text-align: center;
-      margin: 20px 0;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-      font-size: 24px;
-      color: #00e676;
-    }
-
-    .input-field input {
-      width: 100%;
-      padding: 16px;
-      border-radius: 8px;
-      border: none;
-      font-size: 18px;
-      margin-bottom: 15px;
-    }
-
-    .sim-button {
-      background-color: #444;
+      background: linear-gradient(135deg, #111, #222, #111);
+      overflow: hidden;
+      font-family: "Poppins", sans-serif;
       color: #fff;
-      padding: 12px;
-      border-radius: 10px;
-      margin: 8px 0;
-      cursor: pointer;
-      font-size: 16px;
-      transition: 0.3s;
+      position: relative;
     }
 
-    .sim-button:hover {
-      background-color: #555;
-    }
-
-    .sim-button.selected {
-      background-color: #2196f3;
-      color: white;
-      font-weight: bold;
-    }
-
-    .submit-button {
-      background-color: #00c853;
-      color: white;
-      border: none;
-      padding: 14px;
+    /* Moving Particles Background */
+    .particles {
+      position: absolute;
       width: 100%;
-      font-size: 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 0;
     }
 
-    .share-section {
-      display: none;
-      margin-top: 25px;
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #00fff7;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: move 8s linear infinite;
     }
 
-    .copy-button {
-      background-color: #3f51b5;
-      color: white;
-      padding: 12px 16px;
-      border-radius: 8px;
-      border: none;
-      margin-top: 12px;
-      cursor: pointer;
+    @keyframes move {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
+    }
+
+    /* Center Box */
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px 50px;
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 20px rgba(0,255,255,0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 25px;
+      text-shadow: 0px 0px 10px rgba(0,255,255,0.7);
+    }
+
+    /* Progress Bar */
+    .progress-container {
+      width: 250px;
+      height: 10px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50px;
+      overflow: hidden;
+      margin: 10px auto 20px;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #00fff7, #00c3ff);
+      border-radius: 50px;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 10px rgba(0,255,255,0.7);
+    }
+
+    .note {
       font-size: 16px;
-      transition: 0.3s;
+      opacity: 0.85;
     }
 
-    .copy-button:hover {
-      background-color: #283593;
-    }
-
-    .icons {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
-
-    .icons a img {
-      width: 40px;
-      height: 40px;
-      transition: transform 0.2s;
-    }
-
-    .icons a img:hover {
-      transform: scale(1.2);
-    }
-
-    .ref-count {
-      margin-top: 18px;
-      font-size: 15px;
-      color: #ccc;
-    }
-
-    p.notice {
-      font-size: 16px;
-      color: #dddddd;
-      margin-top: 15px;
-      line-height: 1.6;
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
     }
   </style>
+
+  <script>
+    let progress = 0;
+    let bar = null;
+    let interval = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      bar = document.querySelector(".progress-bar");
+      interval = setInterval(updateProgress, 25); // প্রতি 25ms এ progress বাড়বে
+      createParticles();
+    });
+
+    function updateProgress() {
+      progress++;
+      bar.style.width = progress + "%";
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        window.location.href = "https://m-sports-news24.blogspot.com"; // এখানে লিংক
+      }
+    }
+
+    function createParticles() {
+      const container = document.querySelector(".particles");
+      for (let i = 0; i < 25; i++) {
+        const p = document.createElement("div");
+        p.classList.add("particle");
+        p.style.left = Math.random() * 100 + "%";
+        p.style.bottom = Math.random() * 100 + "px";
+        p.style.animationDelay = Math.random() * 5 + "s";
+        p.style.animationDuration = 5 + Math.random() * 5 + "s";
+        container.appendChild(p);
+      }
+    }
+  </script>
 </head>
 <body>
 
-  <div class="container">
-    <h2>১০ GB ফ্রি ইন্টারনেট</h2>
+  <div class="particles"></div>
 
-    <input type="text" id="name" placeholder="আপনার নাম লিখুন">
-    <input type="text" id="phone" placeholder="আপনার নাম্বার লিখুন">
-
-    <div id="simButtons">
-      <div class="sim-button" onclick="selectSim(this, 'airtel')">Airtel</div>
-      <div class="sim-button" onclick="selectSim(this, 'robi')">Robi</div>
-      <div class="sim-button" onclick="selectSim(this, 'grameenphone')">Grameenphone</div>
-      <div class="sim-button" onclick="selectSim(this, 'banglalink')">Banglalink</div>
+  <div class="content">
+    <h1>🚀 লোড হচ্ছে...</h1>
+    <div class="progress-container">
+      <div class="progress-bar"></div>
     </div>
-
-    <button class="submit-button" onclick="handleSubmit()">Submit</button>
-
-    <div class="share-section" id="shareSection">
-      <p class="notice">আপনার বন্ধুকে লিংকটি শেয়ার করুন। <br>১০ জন রেফার পূর্ণ হলে আপনি পাবেন ১০ জিবি ফ্রি ইন্টারনেট।</p>
-
-      <button class="copy-button" onclick="copyLink()">লিংক কপি করুন</button>
-
-      <div class="icons">
-        <a id="wa" href="#" target="_blank"><img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png"/></a>
-        <a id="ms" href="#" target="_blank"><img src="https://img.icons8.com/color/48/000000/facebook-messenger--v1.png"/></a>
-        <a id="tg" href="#" target="_blank"><img src="https://img.icons8.com/color/48/000000/telegram-app.png"/></a>
-        <a id="imo" href="#" target="_blank"><img src="https://img.icons8.com/fluency/48/000000/imo.png"/></a>
-      </div>
-
-      <div class="ref-count">রেফার সম্পন্ন হয়েছে: <span id="refCount">0</span></div>
-    </div>
+    <div class="note">আপনাকে বিজ্ঞাপনে নিয়ে যাওয়া হচ্ছে...</div>
   </div>
-
-  <!-- নিচের Ad -->
-  <script type='text/javascript' src='//pl26607619.profitableratecpm.com/89/be/eb/89beeb153f91b5aec28bb0d98b62029c.js'></script>
-
-  <script>
-    let selectedSim = "";
-    let refCount = 0;
-
-    function selectSim(element, sim) {
-      selectedSim = sim;
-      document.querySelectorAll(".sim-button").forEach(btn => btn.classList.remove("selected"));
-      element.classList.add("selected");
-    }
-
-    function handleSubmit() {
-      const name = document.getElementById("name").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-
-      if (!name || !phone || !selectedSim) {
-        alert("সব তথ্য দিন এবং সিম নির্বাচন করুন।");
-        return;
-      }
-
-      const domain = window.location.origin;
-      const referralLink = `${domain}?ref=${Math.floor(Math.random() * 1000000)}`;
-
-      document.getElementById("shareSection").style.display = "block";
-
-      document.getElementById("wa").href = `https://wa.me/?text=${encodeURIComponent("১০ জিবি ফ্রি ইন্টারনেট নিতে লিংকটি দেখুন: " + referralLink)}`;
-      document.getElementById("ms").href = `https://m.me/?link=${encodeURIComponent(referralLink)}`;
-      document.getElementById("tg").href = `https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${encodeURIComponent("১০ জিবি ফ্রি ইন্টারনেট")}`;
-      document.getElementById("imo").href = referralLink;
-
-      const urlParams = new URLSearchParams(window.location.search);
-      const ref = urlParams.get("ref");
-      if (ref) {
-        const refKey = "ref_" + ref;
-        if (!localStorage.getItem(refKey)) {
-          refCount = parseInt(localStorage.getItem("refCount") || "0");
-          refCount++;
-          localStorage.setItem("ref_" + ref, "true");
-          localStorage.setItem("refCount", refCount);
-        }
-      }
-
-      document.getElementById("refCount").innerText = localStorage.getItem("refCount") || "0";
-    }
-
-    function copyLink() {
-      const domain = window.location.origin;
-      const randomID = Math.floor(Math.random() * 1000000);
-      const referralLink = `${domain}?ref=${randomID}`;
-      navigator.clipboard.writeText(referralLink).then(() => {
-        alert("লিংক কপি হয়েছে!");
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("refCount").innerText = localStorage.getItem("refCount") || "0";
-    });
-  </script>
 
 </body>
 </html>
