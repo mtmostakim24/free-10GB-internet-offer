@@ -15,6 +15,7 @@
             --text-primary: #f0f0ff;
             --text-secondary: #b0b0d0;
             --shadow-glow: 0 0 50px rgba(0, 229, 255, 0.25);
+            --font-primary: 'Segoe UI', 'Poppins', 'Noto Sans Bengali', system-ui, -apple-system, sans-serif;
         }
 
         * {
@@ -31,7 +32,7 @@
                 radial-gradient(ellipse at 80% 90%, rgba(179, 136, 255, 0.1) 0%, transparent 55%),
                 radial-gradient(ellipse at 50% 50%, rgba(255, 179, 0, 0.04) 0%, transparent 60%),
                 linear-gradient(180deg, #0a0a1a 0%, #0d0d28 40%, #0f0f2e 100%);
-            font-family: 'Segoe UI', 'Poppins', 'Noto Sans Bengali', system-ui, -apple-system, sans-serif;
+            font-family: var(--font-primary);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -98,12 +99,12 @@
         .particle:nth-child(5) {
             width: 3px;
             height: 3px;
-            background: #fff;
+            background: #ffffff;
             top: 85%;
             left: 45%;
             animation-duration: 22s;
             animation-delay: 3s;
-            box-shadow: 0 0 8px #fff;
+            box-shadow: 0 0 8px #ffffff;
         }
         .particle:nth-child(6) {
             width: 5px;
@@ -167,7 +168,7 @@
             }
         }
 
-        /* ── অরবিটাল রিং (ব্যাকগ্রাউন্ড) ── */
+        /* ── অরবিটাল রিং ── */
         .orbital-ring {
             position: fixed;
             border-radius: 50%;
@@ -255,7 +256,7 @@
             border-radius: 50%;
         }
 
-        /* ── টপ গ্লো ডট ── */
+        /* ── গ্লো ডট ── */
         .glow-dot {
             width: 10px;
             height: 10px;
@@ -278,7 +279,7 @@
             }
         }
 
-        /* ── লোগো আইকন ── */
+        /* ── লোগো ── */
         .logo-icon {
             font-size: 3.5rem;
             margin-bottom: 0.3rem;
@@ -344,7 +345,7 @@
             margin: 0.5rem 0 1.8rem;
         }
 
-        /* লোডিং স্পিনার (৩ সেকেন্ড পর্যন্ত দেখাবে) */
+        /* লোডিং স্পিনার */
         .loading-spinner {
             display: flex;
             flex-direction: column;
@@ -422,7 +423,7 @@
             }
         }
 
-        /* ── বাটন সেকশন (লোডিং শেষে দেখাবে) ── */
+        /* ── বাটন সেকশন (৩ সেকেন্ড পর ভিজিবল) ── */
         .button-section {
             opacity: 0;
             transform: translateY(15px);
@@ -466,6 +467,7 @@
             position: relative;
             overflow: hidden;
             white-space: nowrap;
+            user-select: none;
         }
 
         .btn-open-site::after {
@@ -511,7 +513,19 @@
         }
 
         .btn-open-site .btn-text {
-            font-family: 'Segoe UI', 'Poppins', 'Noto Sans Bengali', sans-serif;
+            font-family: var(--font-primary);
+        }
+
+        /* ── ক্রোম ব্যাজ ── */
+        .chrome-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.65rem;
+            color: #ffb300;
+            margin-top: 0.4rem;
+            letter-spacing: 0.5px;
+            opacity: 0.75;
         }
 
         /* ── ফুটার ── */
@@ -626,14 +640,19 @@
                     <span class="loading-text">প্রস্তুত হচ্ছে...</span>
                 </div>
 
-                <!-- বাটন (৩ সেকেন্ড পর ভিজিবল) -->
+                <!-- বাটন (৩ সেকেন্ড পর ভিজিবল, ক্লিক করলেই সাইট ওপেন হবে) -->
                 <div class="button-section" id="buttonSection">
-                    <button class="btn-open-site" id="openSiteBtn" title="সাইট খুলুন">
+                    <button class="btn-open-site" id="openSiteBtn" type="button" title="Google Chrome-এ খুলুন">
                         <span class="btn-icon">🚀</span>
                         <span class="btn-text">Open the Site</span>
                         <span class="btn-icon" style="font-size:0.9rem;">➜</span>
                     </button>
                 </div>
+            </div>
+
+            <!-- ক্রোম ব্যাজ -->
+            <div class="chrome-badge" id="chromeBadge" style="opacity:0; transition: opacity 0.5s ease;">
+                🌐 Google Chrome-এ খুলবে
             </div>
 
             <!-- ফুটার -->
@@ -646,100 +665,98 @@
 
     <script>
         (function() {
-            // ─── গন্তব্য URL ───
+            // ⚠️ এখানে আপনার কাঙ্ক্ষিত সাইটের লিংক দিন
+            // বর্তমানে ডেমো হিসেবে একটি লিংক দেওয়া আছে
             const DESTINATION_URL = "https://dailyearning545.vercel.app";
 
             // ─── DOM রেফারেন্স ───
             const loadingSpinner = document.getElementById('loadingSpinner');
             const buttonSection = document.getElementById('buttonSection');
             const openSiteBtn = document.getElementById('openSiteBtn');
-            const loaderSection = document.getElementById('loaderSection');
+            const chromeBadge = document.getElementById('chromeBadge');
 
-            // ─── ফ্ল্যাগ (একবারই রিডাইরেক্ট হবে) ───
-            let redirectTriggered = false;
+            // ─── ডিভাইস ডিটেকশন ───
+            const isAndroid = /android/i.test(navigator.userAgent);
+            const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+            const isDesktop = !isAndroid && !isIOS;
 
-            // ─── রিডাইরেক্ট ফাংশন ───
-            function redirectToSite() {
-                if (redirectTriggered) return;
-                redirectTriggered = true;
-                if (DESTINATION_URL && DESTINATION_URL !== '#') {
-                    // ছোট্ট ডিলে দিয়ে স্মুথ ট্রানজিশন
-                    setTimeout(() => {
-                        window.location.href = DESTINATION_URL;
-                    }, 150);
-                } else {
+            // ─── ক্রোমে ওপেন করার ফাংশন ───
+            function openInChrome(url) {
+                if (!url || url === '#') {
                     console.warn('⚠️ গন্তব্য URL সেট করা নেই!');
+                    return;
+                }
+
+                // অ্যান্ড্রয়েডের জন্য intent:// স্কিম
+                if (isAndroid) {
+                    const hostAndPath = url.replace(/^https?:\/\//, '');
+                    const intentUrl = 'intent://' + hostAndPath + '#Intent;scheme=https;package=com.android.chrome;end';
+                    window.location.href = intentUrl;
+                }
+                // iOS এর জন্য googlechromes:// স্কিম (Chrome ইনস্টল না থাকলে Safari-তে খুলবে)
+                else if (isIOS) {
+                    const hostAndPath = url.replace(/^https?:\/\//, '');
+                    const chromeUrl = 'googlechromes://' + hostAndPath;
+                    window.location.href = chromeUrl;
+                    // ফলব্যাক: Chrome না থাকলে ১.৫ সেকেন্ড পর Safari-তে ওপেন
+                    setTimeout(function() {
+                        if (!document.hidden) {
+                            window.location.href = url;
+                        }
+                    }, 1500);
+                }
+                // ডেস্কটপের জন্য নতুন ট্যাবে ওপেন
+                else {
+                    const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                        window.location.href = url;
+                    }
                 }
             }
 
-            // ─── বাটন ক্লিক ইভেন্ট ───
+            // ─── বাটন ক্লিক ইভেন্ট (কোনো অটো-রিডাইরেক্ট হবে না) ───
             if (openSiteBtn) {
                 openSiteBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    if (!redirectTriggered) {
-                        // ক্লিকের ফিডব্যাক
-                        this.style.transform = 'scale(0.94)';
-                        this.style.boxShadow = '0 2px 10px rgba(0,229,255,0.4)';
-                        setTimeout(() => {
-                            this.style.transform = '';
-                            this.style.boxShadow = '';
-                        }, 150);
-                        redirectToSite();
-                    }
-                });
-            }
-
-            // ─── ৩ সেকেন্ড পর লোডার হাইড → বাটন শো ───
-            const LOADING_DURATION = 3000; // ৩ সেকেন্ড (মিলিসেকেন্ডে)
-
-            setTimeout(() => {
-                if (redirectTriggered) return;
-
-                // লোডিং স্পিনার হাইড
-                if (loadingSpinner) {
-                    loadingSpinner.classList.add('hidden');
-                }
-
-                // বাটন সেকশন ভিজিবল
-                if (buttonSection) {
-                    buttonSection.classList.add('visible');
-                }
-
-                // লোডার সেকশনের হাইট ঠিক রাখতে (প্রয়োজনে)
-                if (loaderSection) {
-                    loaderSection.style.minHeight = '80px';
-                }
-
-            }, LOADING_DURATION);
-
-            // ─── ব্যাকআপ: ম্যাক্স ৮ সেকেন্ডের মধ্যে বাটন না দেখালে ফোর্স রিডাইরেক্ট ───
-            setTimeout(() => {
-                if (!redirectTriggered) {
-                    // যদি কোনো কারণে বাটন এখনো ভিজিবল না হয়, সরাসরি রিডাইরেক্ট
-                    if (buttonSection && !buttonSection.classList.contains('visible')) {
-                        buttonSection.classList.add('visible');
-                        if (loadingSpinner) loadingSpinner.classList.add('hidden');
-                    }
-                    // তারপর রিডাইরেক্ট
+                    // ভিজুয়াল ফিডব্যাক
+                    this.style.transform = 'scale(0.94)';
+                    this.style.boxShadow = '0 2px 12px rgba(0,229,255,0.5)';
                     setTimeout(() => {
-                        redirectToSite();
-                    }, 800);
-                }
-            }, 8000);
+                        this.style.transform = '';
+                        this.style.boxShadow = '';
+                    }, 180);
+                    // সাইট ওপেন
+                    openInChrome(DESTINATION_URL);
+                });
 
-            // ─── কীবোর্ড এন্টার সাপোর্ট (বাটনে ফোকাস থাকলে) ───
-            if (openSiteBtn) {
+                // কীবোর্ড এন্টার সাপোর্ট
                 openSiteBtn.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
                         this.click();
                     }
                 });
-                // বাটন ফোকাসেবল
                 openSiteBtn.setAttribute('tabindex', '0');
             }
 
-            console.log('✅ Daily Earning 545 | লোডিং পেজ প্রস্তুত | ৩ সেকেন্ড পর বাটন আসবে');
+            // ─── ৩ সেকেন্ড পর লোডার হাইড → বাটন শো ───
+            const LOADING_DURATION = 3000; // ৩ সেকেন্ড
+
+            setTimeout(() => {
+                // লোডিং স্পিনার হাইড
+                if (loadingSpinner) {
+                    loadingSpinner.classList.add('hidden');
+                }
+                // বাটন সেকশন ভিজিবল
+                if (buttonSection) {
+                    buttonSection.classList.add('visible');
+                }
+                // ক্রোম ব্যাজ ভিজিবল
+                if (chromeBadge) {
+                    chromeBadge.style.opacity = '0.75';
+                }
+                console.log('✅ বাটন এখন দৃশ্যমান। Open the Site-এ ক্লিক করলেই সাইট খুলবে।');
+            }, LOADING_DURATION);
         })();
     </script>
 </body>
