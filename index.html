@@ -1682,7 +1682,7 @@
       const method = document.getElementById("withdraw-method").value;
       const address = document.getElementById("withdraw-address").value;
       if (isNaN(amount)) { showNotification("Please enter a valid amount", "error"); return; }
-      if (amount < 30) { showNotification("Minimum withdrawal amount is $30", "error"); return; }
+      if (amount < 0.030) { showNotification("Minimum withdrawal amount is $30", "error"); return; }
       if (amount > userData.lifetimeEarning) { showNotification("Insufficient balance", "error"); return; }
       if (userData.referrals < 10) { showNotification("You need at least 10 referrals to withdraw", "error"); return; }
       if (method === "Select a method") { showNotification("Please select a withdrawal method", "error"); return; }
