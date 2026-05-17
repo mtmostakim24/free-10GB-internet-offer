@@ -1,473 +1,2053 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Daily Earning 545 | লোড হচ্ছে...</title>
-    <style>
-        :root {
-            --bg-deep: #0a0a1a;
-            --accent-cyan: #00e5ff;
-            --accent-gold: #ffb300;
-            --accent-purple: #b388ff;
-            --glass-bg: rgba(18, 18, 38, 0.65);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --text-primary: #f0f0ff;
-            --text-secondary: #b0b0d0;
-            --shadow-glow: 0 0 50px rgba(0, 229, 255, 0.25);
-            --font-primary: 'Segoe UI', 'Poppins', 'Noto Sans Bengali', system-ui, -apple-system, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Daily Earning545 | Premium Earning Platform</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://telegram.org/js/telegram-web-app.js">
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary: #4cc9f0;
+      --success: #4ade80;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --card-bg: #ffffff;
+      --body-bg: #f1f5f9;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
+    }
 
-        body {
-            min-height: 100vh;
-            background: var(--bg-deep);
-            background-image:
-                radial-gradient(ellipse at 20% 10%, rgba(0, 229, 255, 0.08) 0%, transparent 55%),
-                radial-gradient(ellipse at 80% 90%, rgba(179, 136, 255, 0.1) 0%, transparent 55%),
-                radial-gradient(ellipse at 50% 50%, rgba(255, 179, 0, 0.04) 0%, transparent 60%),
-                linear-gradient(180deg, #0a0a1a 0%, #0d0d28 40%, #0f0f2e 100%);
-            font-family: var(--font-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            -webkit-tap-highlight-color: transparent;
-        }
+    body {
+      background-color: var(--body-bg);
+      color: var(--dark);
+      padding-bottom: 80px;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    }
 
-        /* ── ফ্লোটিং পার্টিকেল ── */
-        .particles {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-        }
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            animation: drift linear infinite;
-            opacity: 0;
-        }
+    header .title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
 
-        .particle:nth-child(1) {
-            width: 6px; height: 6px; background: var(--accent-cyan);
-            top: 15%; left: 10%; animation-duration: 14s; animation-delay: 0s;
-            box-shadow: 0 0 14px var(--accent-cyan);
-        }
-        .particle:nth-child(2) {
-            width: 4px; height: 4px; background: var(--accent-gold);
-            top: 70%; left: 80%; animation-duration: 18s; animation-delay: 2s;
-            box-shadow: 0 0 10px var(--accent-gold);
-        }
-        .particle:nth-child(3) {
-            width: 5px; height: 5px; background: var(--accent-purple);
-            top: 30%; left: 75%; animation-duration: 20s; animation-delay: 4s;
-            box-shadow: 0 0 12px var(--accent-purple);
-        }
-        .particle:nth-child(4) {
-            width: 7px; height: 7px; background: var(--accent-cyan);
-            top: 60%; left: 20%; animation-duration: 16s; animation-delay: 1s;
-            box-shadow: 0 0 16px var(--accent-cyan);
-        }
-        .particle:nth-child(5) {
-            width: 3px; height: 3px; background: #ffffff;
-            top: 85%; left: 45%; animation-duration: 22s; animation-delay: 3s;
-            box-shadow: 0 0 8px #ffffff;
-        }
-        .particle:nth-child(6) {
-            width: 5px; height: 5px; background: var(--accent-gold);
-            top: 10%; left: 55%; animation-duration: 19s; animation-delay: 5s;
-            box-shadow: 0 0 11px var(--accent-gold);
-        }
-        .particle:nth-child(7) {
-            width: 4px; height: 4px; background: var(--accent-purple);
-            top: 45%; left: 90%; animation-duration: 24s; animation-delay: 0s;
-            box-shadow: 0 0 10px var(--accent-purple);
-        }
-        .particle:nth-child(8) {
-            width: 6px; height: 6px; background: var(--accent-cyan);
-            top: 50%; left: 5%; animation-duration: 15s; animation-delay: 6s;
-            box-shadow: 0 0 13px var(--accent-cyan);
-        }
+    header .title i {
+      font-size: 1.5rem;
+    }
 
-        @keyframes drift {
-            0% { transform: translateY(0) translateX(0) scale(0); opacity: 0; }
-            10% { opacity: 0.9; transform: translateY(-20px) translateX(10px) scale(1.3); }
-            30% { opacity: 0.7; transform: translateY(-50px) translateX(-15px) scale(0.9); }
-            50% { opacity: 0.5; transform: translateY(-90px) translateX(20px) scale(1.4); }
-            70% { opacity: 0.3; transform: translateY(-130px) translateX(-10px) scale(0.7); }
-            90% { opacity: 0.1; transform: translateY(-170px) translateX(5px) scale(1.1); }
-            100% { opacity: 0; transform: translateY(-200px) translateX(0) scale(0); }
-        }
+    header .balance-display {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 12px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: white;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
 
-        /* ── অরবিটাল রিং ── */
-        .orbital-ring {
-            position: fixed;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            pointer-events: none;
-            z-index: 0;
-        }
-        .orbital-ring.ring-1 {
-            width: 600px; height: 600px;
-            top: calc(50% - 300px); left: calc(50% - 300px);
-            animation: rotateSlow 60s linear infinite;
-            border-color: rgba(0, 229, 255, 0.06);
-        }
-        .orbital-ring.ring-2 {
-            width: 400px; height: 400px;
-            top: calc(50% - 200px); left: calc(50% - 200px);
-            animation: rotateSlow 45s linear infinite reverse;
-            border-color: rgba(179, 136, 255, 0.05);
-        }
+    /* Profile Section */
+    .profile-container {
+      position: relative;
+      padding: 20px 0 30px;
+      overflow: hidden;
+    }
 
-        @keyframes rotateSlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+    .profile-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      z-index: 0;
+      border-radius: 0 0 30px 30px;
+    }
 
-        /* ── প্রধান কন্টেইনার ── */
-        .main-container {
-            position: relative;
-            z-index: 10;
-            width: 90%;
-            max-width: 460px;
-            animation: fadeInUp 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
+    .profile {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
 
-        /* ── গ্লাস কার্ড ── */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 40px;
-            border: 1px solid var(--glass-border);
-            box-shadow:
-                0 30px 60px rgba(0, 0, 0, 0.45),
-                0 0 0 1px rgba(255, 255, 255, 0.06) inset,
-                var(--shadow-glow);
-            padding: 2.5rem 2rem 2.8rem;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
+    .profile-img-container {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgba(67, 97, 238, 0.2);
+      box-shadow: var(--shadow);
+    }
 
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: -1px; left: 30px; right: 30px;
-            height: 1px;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.35),
-                    rgba(0, 229, 255, 0.5),
-                    rgba(255, 255, 255, 0.35),
-                    transparent);
-            border-radius: 50%;
-        }
+    .profile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        /* ── গ্লো ডট ── */
-        .glow-dot {
-            width: 10px; height: 10px;
-            border-radius: 50%;
-            background: var(--accent-cyan);
-            margin: 0 auto 1.2rem;
-            box-shadow: 0 0 20px var(--accent-cyan), 0 0 40px rgba(0, 229, 255, 0.4);
-            animation: pulseDot 2s ease-in-out infinite;
-        }
+    .profile-info {
+      text-align: left;
+      flex: 1;
+    }
 
-        @keyframes pulseDot {
-            0%, 100% { box-shadow: 0 0 20px var(--accent-cyan), 0 0 40px rgba(0, 229, 255, 0.4); transform: scale(1); }
-            50% { box-shadow: 0 0 35px var(--accent-cyan), 0 0 70px rgba(0, 229, 255, 0.7); transform: scale(1.6); }
-        }
+    .name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--dark);
+    }
 
-        /* ── লোগো ── */
-        .logo-icon {
-            font-size: 3.5rem;
-            margin-bottom: 0.3rem;
-            display: inline-block;
-            animation: gentleBounce 3s ease-in-out infinite;
-        }
+    .user-id {
+      font-size: 0.85rem;
+      color: var(--primary);
+      background: rgba(67, 97, 238, 0.1);
+      padding: 3px 8px;
+      border-radius: 20px;
+      display: inline-block;
+    }
 
-        @keyframes gentleBounce {
-            0%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-12px); }
-            50% { transform: translateY(0); }
-            70% { transform: translateY(-6px); }
-            85% { transform: translateY(0); }
-        }
+    /* Stats Section */
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
 
-        .logo-icon .icon-glow {
-            display: inline-block;
-            filter: drop-shadow(0 0 20px rgba(255, 179, 0, 0.6));
-        }
+    .stat-card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px 10px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
 
-        /* ── টাইটেল ── */
-        .brand-title {
-            font-size: 1.7rem;
-            font-weight: 800;
-            letter-spacing: -0.3px;
-            background: linear-gradient(135deg, #ffffff 0%, #d4eaff 40%, #ffd54f 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-            margin-bottom: 0.25rem;
-            line-height: 1.2;
-        }
+    .stat-value {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
 
-        .brand-subtitle {
-            font-size: 0.82rem;
-            color: var(--text-secondary);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            font-weight: 500;
-            opacity: 0.8;
-        }
+    .stat-label {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 5px;
+    }
 
-        /* ── লোডার সেকশন ── */
-        .loader-section {
-            position: relative;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0.5rem 0 1.8rem;
-        }
+    /* Card Styles */
+    .card {
+      background: var(--card-bg);
+      margin: 15px;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .loading-spinner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 5px;
+      width: 100%;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
 
-        .loading-spinner.hidden {
-            opacity: 0;
-            transform: scale(0.85);
-            pointer-events: none;
-            position: absolute;
-        }
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 10px;
+    }
 
-        .spinner-ripple {
-            width: 56px; height: 56px;
-            position: relative;
-        }
+    .card-header i {
+      width: 40px;
+      height: 40px;
+      background: rgba(67, 97, 238, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
 
-        .spinner-ripple div {
-            position: absolute;
-            border: 3px solid var(--accent-cyan);
-            border-radius: 50%;
-            animation: ripple 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-            opacity: 0;
-        }
+    .card-header h3 {
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
 
-        .spinner-ripple div:nth-child(1) { animation-delay: 0s; }
-        .spinner-ripple div:nth-child(2) { animation-delay: 0.5s; border-color: var(--accent-purple); }
-        .spinner-ripple div:nth-child(3) { animation-delay: 1s; border-color: var(--accent-gold); }
+    .card-content {
+      padding: 5px 0;
+    }
 
-        @keyframes ripple {
-            0% { top: 50%; left: 50%; width: 0; height: 0; opacity: 1; transform: translate(-50%, -50%); }
-            100% { top: 50%; left: 50%; width: 56px; height: 56px; opacity: 0; transform: translate(-50%, -50%); }
-        }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
 
-        .loading-text {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            animation: fadeText 2s ease-in-out infinite;
-        }
+    .info-row:last-child {
+      border-bottom: none;
+    }
 
-        @keyframes fadeText {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
+    .info-label {
+      font-weight: 500;
+      color: #666;
+    }
 
-        /* ── বাটন সেকশন ── */
-        .button-section {
-            opacity: 0;
-            transform: translateY(15px);
-            pointer-events: none;
-            transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
-                transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
+    .info-value {
+      font-weight: 700;
+      color: var(--dark);
+    }
 
-        .button-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
+    .progress-container {
+      margin-top: 20px;
+    }
 
-        .btn-open-site {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 38px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: #0a0a1a;
-            background: linear-gradient(135deg, #00e5ff 0%, #ffb300 70%, #ff8a00 100%);
-            border: none;
-            border-radius: 60px;
-            cursor: pointer;
-            box-shadow: 0 8px 30px rgba(0, 229, 255, 0.35);
-            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-            white-space: nowrap;
-            user-select: none;
-        }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
 
-        .btn-open-site::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent 60%);
-            border-radius: 60px;
-            pointer-events: none;
-        }
+    .progress {
+      height: 12px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
 
-        .btn-open-site:hover {
-            transform: translateY(-3px) scale(1.04);
-            box-shadow: 0 14px 40px rgba(0, 229, 255, 0.5);
-            background: linear-gradient(135deg, #33eaff 0%, #ffc233 70%, #ff9a1a 100%);
-        }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 10px;
+      transition: var(--transition);
+    }
 
-        .btn-open-site:active {
-            transform: translateY(0) scale(0.97);
-            box-shadow: 0 4px 16px rgba(0, 229, 255, 0.3);
-            transition: all 0.1s ease;
-        }
+    /* Profile Page Styles */
+    #profile-page {
+      display: none;
+      padding: 20px;
+    }
 
-        .btn-open-site .btn-icon {
-            font-size: 1.3rem;
-        }
+    .profile-card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
 
-        .btn-open-site .btn-text {
-            font-family: var(--font-primary);
-        }
+    .profile-section {
+      margin-bottom: 25px;
+    }
 
-        /* ── ফুটার ── */
-        .footer-tag {
-            margin-top: 1.5rem;
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.3);
-            letter-spacing: 0.5px;
-        }
+    .profile-section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
 
-        .footer-tag .secure-icon {
-            display: inline-block;
-            margin: 0 3px;
-            color: var(--accent-cyan);
-            font-size: 0.65rem;
-        }
+    .profile-info-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
 
-        @media (max-width: 480px) {
-            .glass-card {
-                border-radius: 32px;
-                padding: 2rem 1.4rem 2.2rem;
-            }
-            .brand-title { font-size: 1.35rem; }
-            .brand-subtitle { font-size: 0.7rem; letter-spacing: 1.5px; }
-            .btn-open-site { padding: 13px 28px; font-size: 1rem; gap: 7px; }
-            .logo-icon { font-size: 2.8rem; }
-            .loader-section { height: 70px; }
-            .spinner-ripple { width: 44px; height: 44px; }
-            .spinner-ripple div { border-width: 2.5px; }
-            @keyframes ripple {
-                0% { width: 0; height: 0; opacity: 1; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-                100% { width: 44px; height: 44px; opacity: 0; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-            }
-        }
-    </style>
+    .profile-info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-title {
+      color: #666;
+    }
+
+    .info-data {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .referral-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .referral-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .referral-stat {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      padding: 15px;
+      text-align: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .referral-stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .referral-stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .referral-link {
+      background: white;
+      color: var(--primary);
+      padding: 15px;
+      border-radius: 15px;
+      font-weight: 500;
+      margin: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Button Styles */
+    .button {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      border-radius: 15px;
+      margin-top: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+      border: none;
+      font-size: 1rem;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+    }
+
+    .button-secondary {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      box-shadow: none;
+    }
+
+    .button-secondary:hover {
+      background: #f8fafc;
+      transform: none;
+    }
+
+    /* Input Styles - Fixed sizing */
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 1rem;
+      background: #f8fafc;
+      transition: var(--transition);
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      background: var(--card-bg);
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+      padding: 10px 0;
+      z-index: 100;
+    }
+
+    .nav-item {
+      text-align: center;
+      font-size: 0.7rem;
+      cursor: pointer;
+      color: #666;
+      transition: var(--transition);
+      width: 70px;
+    }
+
+    .nav-icon {
+      width: 24px;
+      height: 24px;
+      margin: 0 auto 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 12px;
+      transition: var(--transition);
+    }
+
+    .nav-item.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .nav-item.active .nav-icon {
+      background: rgba(67, 97, 238, 0.1);
+      color: var(--primary);
+    }
+
+    .nav-label {
+      font-size: 0.75rem;
+    }
+
+    /* Task Counter */
+    .task-counter {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .counter-item {
+      text-align: center;
+      background: #f8fafc;
+      border-radius: 15px;
+      padding: 15px;
+      flex: 1;
+      margin: 0 5px;
+    }
+
+    .counter-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .counter-label {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    /* Task Visualization */
+    .task-visualization {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 20px 0;
+    }
+
+    .task-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e2e8f0;
+    }
+
+    .task-dot.completed {
+      background: var(--success);
+    }
+
+    /* Notification */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transform: translateX(120%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .notification.show {
+      transform: translateX(0);
+    }
+
+    .notification.success {
+      border-left: 4px solid var(--success);
+    }
+
+    .notification.error {
+      border-left: 4px solid var(--danger);
+    }
+
+    .notification.warning {
+      border-left: 4px solid var(--warning);
+    }
+
+    /* Loading Spinner */
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(67, 97, 238, 0.1);
+      border-left-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Countdown Banner */
+    .countdown-banner {
+      background: linear-gradient(135deg, #fff3cd, #ffe69c);
+      border: 2px solid #f59e0b;
+      color: #856404;
+      padding: 15px 20px;
+      border-radius: 15px;
+      margin: 15px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-weight: 600;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+    }
+
+    .countdown-banner.show {
+      display: flex;
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.02);
+      }
+    }
+
+    .countdown-timer {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #d97706;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .cards-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin: 15px;
+      }
+
+      .card {
+        margin: 0;
+      }
+
+      .profile {
+        max-width: 600px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="particles">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div>
+  <div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="notification-message">Notification message</span>
+  </div>
+
+  <!-- Countdown Banner for Task Timer -->
+  <div class="countdown-banner" id="countdownBanner">
+    <i class="fas fa-hourglass-half" style="font-size: 1.5rem;"></i>
+    <span>⏳ Please stay on the ad page for</span>
+    <span class="countdown-timer" id="countdownTimer">30</span>
+    <span>seconds</span>
+  </div>
+
+  <header>
+    <div class="title">
+      <i class="fas fa-robot"></i>
+      <span>Daily Earning545</span>
     </div>
-    <div class="orbital-ring ring-1"></div>
-    <div class="orbital-ring ring-2"></div>
+    <div class="balance-display">
+      <i class="fas fa-wallet"></i>
+      <span id="header-balance">$0.000</span>
+    </div>
+  </header>
 
-    <div class="main-container">
-        <div class="glass-card">
-            <div class="glow-dot"></div>
-            <div class="logo-icon"><span class="icon-glow">⚡💎</span></div>
-            <h1 class="brand-title">Daily Earning 545</h1>
-            <p class="brand-subtitle">✦ প্রিমিয়াম প্ল্যাটফর্ম ✦</p>
-
-            <div class="loader-section">
-                <div class="loading-spinner" id="loadingSpinner">
-                    <div class="spinner-ripple"><div></div><div></div><div></div></div>
-                    <span class="loading-text">প্রস্তুত হচ্ছে...</span>
-                </div>
-
-                <div class="button-section" id="buttonSection">
-                    <button class="btn-open-site" id="openSiteBtn">
-                        <span class="btn-icon">🚀</span>
-                        <span class="btn-text">Open the Site</span>
-                        <span class="btn-icon" style="font-size:0.9rem;">➜</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="footer-tag">
-                <span class="secure-icon">🔒</span> নিরাপদ ও নির্ভরযোগ্য
-                <span class="secure-icon">🔒</span>
-            </div>
+  <div class="profile-container" id="home-profile">
+    <div class="profile">
+      <div class="profile-header">
+        <div class="profile-img-container">
+          <img id="profile-picture" src="https://i.ibb.co/6R45cM6C/Polish-20250529-015530961.jpg" alt="Profile">
         </div>
+        <div class="profile-info">
+          <div class="name" id="username">Loading...</div>
+          <div class="user-id">ID: <span id="user-id">Loading...</span></div>
+        </div>
+      </div>
+
+      <div class="stats-container">
+        <div class="stat-card">
+          <div class="stat-value" id="total-earned">$0.000</div>
+          <div class="stat-label">Total Earned</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="tasks-completed">0</div>
+          <div class="stat-label">Tasks Done</div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Home Page Content -->
+  <div class="cards-container" id="home-content">
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-tasks"></i>
+        <h3>Today's Tasks</h3>
+      </div>
+      <div class="card-content">
+        <div class="info-row">
+          <span class="info-label">Total Tasks</span>
+          <span class="info-value" id="total">150</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Completed</span>
+          <span class="info-value" id="completed-card">0</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Remaining</span>
+          <span class="info-value" id="remaining-card">150</span>
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-header">
+            <span class="info-label">Task Progress</span>
+            <span class="info-value" id="progress-percent">0%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+        </div>
+
+        <div class="task-visualization" id="task-visual">
+          <!-- Task dots will be generated here -->
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-chart-line"></i>
+        <h3>Earnings</h3>
+      </div>
+      <div class="card-content">
+        <div class="info-row">
+          <span class="info-label">Today's Earnings</span>
+          <span class="info-value">USD $<span id="todays-earning">0.000</span></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Lifetime Earnings</span>
+          <span class="info-value">USD $<span id="lifetime-earning">0.000</span></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Avg. per Task</span>
+          <span class="info-value">$0.021</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="referral-section">
+      <div class="referral-header">
+        <i class="fas fa-users"></i>
+        <h3>Refer & Earn</h3>
+      </div>
+
+      <div class="referral-content">
+        <p>Invite friends and earn $0.50 for each successful referral. Share your link and start earning!</p>
+
+        <div class="referral-stats">
+          <div class="referral-stat">
+            <div class="referral-stat-value" id="ref-earned">$0</div>
+            <div class="referral-stat-label">Referral Earnings</div>
+          </div>
+          <div class="referral-stat">
+            <div class="referral-stat-value" id="referral-count">0</div>
+            <div class="referral-stat-label">Referrals</div>
+          </div>
+        </div>
+
+        <div class="referral-link">
+          <span id="ref-link">Loading...</span>
+          <i class="fas fa-copy" onclick="copyReferralLink()"></i>
+        </div>
+
+        <button class="button" onclick="shareReferralLink()">
+          <i class="fas fa-share-alt"></i> Share Referral Link
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Withdraw Section -->
+  <div class="card" id="withdraw" style="display:none;">
+    <div class="card-header">
+      <i class="fas fa-money-bill-wave"></i>
+      <h3>Withdraw Funds</h3>
+    </div>
+    <div class="card-content">
+      <div class="info-row">
+        <span class="info-label">Available Balance</span>
+        <span class="info-value">USD $<span id="available">0.000</span></span>
+      </div>
+
+      <div class="input-group">
+        <label>Withdrawal Method</label>
+        <select id="withdraw-method">
+          <option>Select a method</option>
+          <option>Bkash $30</option>
+          <option>Nagad $30</option>
+          <option>Payeer $50</option>
+          <option>USDT (TRC20) $50</option>
+          <option>Skrill $30</option>
+          <option>Neteller $30</option>
+          <option>Perfect Money $50</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>Amount (USD)</label>
+        <input type="text" id="withdraw-amount" placeholder="Enter amount">
+      </div>
+
+      <div class="input-group">
+        <label>Withdrawal Address</label>
+        <input type="text" id="withdraw-address" placeholder="Enter wallet address">
+      </div>
+
+      <button class="button" onclick="submitWithdrawal()">
+        <i class="fas fa-paper-plane"></i> Submit Withdrawal
+      </button>
+    </div>
+    <button class="button telegram-proof-btn" onclick="openTelegramChannel()">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <i class="fab fa-telegram" style="font-size: 1.2rem;"></i>
+        <span>Daily Withdrawal Proof Channel</span>
+      </div>
+    </button>
+
+    <style>
+      .telegram-proof-btn {
+        background: linear-gradient(135deg, #0088cc 0%, #00aced 100%) !important;
+        margin-top: 10px !important;
+      }
+
+      .telegram-proof-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 136, 204, 0.4) !important;
+      }
+    </style>
 
     <script>
-        (function() {
-            // ⚠️ নিচের লিংকটি আপনার সাইটের লিংক দিয়ে পাল্টে দিন
-            const SITE_URL = "https://dailyearning545.vercel.app";  // এখানে আপনার কাঙ্ক্ষিত URL বসান
-
-            const loadingSpinner = document.getElementById('loadingSpinner');
-            const buttonSection = document.getElementById('buttonSection');
-            const openSiteBtn = document.getElementById('openSiteBtn');
-
-            // ৩ সেকেন্ড পর লোডার লুকিয়ে বাটন দেখানো
-            setTimeout(() => {
-                if (loadingSpinner) loadingSpinner.classList.add('hidden');
-                if (buttonSection) buttonSection.classList.add('visible');
-            }, 3000);
-
-            // বাটনে ক্লিক করলে সরাসরি সাইট ওপেন
-            if (openSiteBtn) {
-                openSiteBtn.addEventListener('click', function() {
-                    // একটু চাপার অনুভূতি
-                    this.style.transform = 'scale(0.96)';
-                    setTimeout(() => { this.style.transform = ''; }, 150);
-                    // সাইটে চলে যাও
-                    window.location.href = SITE_URL;  // অথবা window.open(SITE_URL, '_blank') নতুন ট্যাবে খুলতে
-                });
-            }
-        })();
+      function openTelegramChannel() {
+        window.open('https://t.me/Daily_Earning545_Bot', '_blank');
+      }
     </script>
+  </div>
+
+  <!-- Earn Section -->
+  <div id="earn" style="display:none;">
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-coins"></i>
+        <h3>Earn Money</h3>
+      </div>
+      <div class="card-content">
+        <p class="info-label" style="margin-bottom: 20px; text-align: center;">
+          <i class="fas fa-info-circle"></i> Earn money by viewing ads. Stay on the ad page for 30 seconds to complete a task and earn $0.021 per task!
+        </p>
+
+        <div class="task-counter">
+          <div class="counter-item">
+            <div class="counter-value" id="etotal">150</div>
+            <div class="counter-label">Total Tasks</div>
+          </div>
+          <div class="counter-item">
+            <div class="counter-value" id="ecompleted">0</div>
+            <div class="counter-label">Completed</div>
+          </div>
+          <div class="counter-item">
+            <div class="counter-value" id="eremaining">150</div>
+            <div class="counter-label">Remaining</div>
+          </div>
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-header">
+            <span class="info-label">Task Progress</span>
+            <span class="info-value" id="earn-progress-percent">0%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" id="earn-progress-bar"></div>
+          </div>
+        </div>
+
+        <button class="button" id="startEarningBtn" onclick="startTask()">
+          <i class="fas fa-play"></i> Start Earning ▶
+        </button>
+      </div>
+      <button class="button youtube-guide-btn" onclick="openYouTubeGuide()">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+          <div style="width: 24px; height: 24px; background: white; border-radius: 4px; 
+                        display: flex; align-items: center; justify-content: center;">
+            <i class="fab fa-youtube" style="font-size: 1rem; color: #FF0000;"></i>
+          </div>
+          <span style="font-weight: 600" ;>How to work the bot</span>
+        </div>
+      </button>
+
+      <style>
+        .youtube-guide-btn {
+          background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%) !important;
+          margin-top: 10px !important;
+          border: 2px solid #FF0000 !important;
+        }
+
+        .youtube-guide-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5) !important;
+          background: linear-gradient(135deg, #CC0000 0%, #990000 100%) !important;
+        }
+      </style>
+
+      <script>
+        function openYouTubeGuide() {
+          window.open('https://t.me/howto_workthe_bot', '_blank');
+        }
+      </script>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-trophy"></i>
+        <h3>Task Completion</h3>
+      </div>
+      <div class="card-content">
+        <div class="task-visualization" id="earn-task-visual">
+          <!-- Task dots will be generated here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Page -->
+  <div id="profile-page">
+    <div class="profile-card">
+      <div class="profile-section">
+        <div class="profile-section-title">
+          <i class="fas fa-user-circle"></i>
+          <h3>Account Information</h3>
+        </div>
+
+        <div class="profile-info-item">
+          <div class="info-title">Username</div>
+          <div class="info-data" id="profile-username">Loading...</div>
+        </div>
+
+        <div class="profile-info-item">
+          <div class="info-title">User ID</div>
+          <div class="info-data" id="profile-user-id">Loading...</div>
+        </div>
+
+        <div class="profile-info-item">
+          <div class="info-title">Join Date</div>
+          <div class="info-data" id="join-date">Loading...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="profile-section">
+        <div class="profile-section-title">
+          <i class="fas fa-wallet"></i>
+          <h3>Financial Summary</h3>
+        </div>
+
+        <div class="profile-info-item">
+          <div class="info-title">Current Balance</div>
+          <div class="info-data" id="profile-balance">$0.000</div>
+        </div>
+
+        <div class="profile-info-item">
+          <div class="info-title">Total Withdrew</div>
+          <div class="info-data" id="profile-withdrew">$0.000</div>
+        </div>
+
+        <div class="profile-info-item">
+          <div class="info-title">Today's Earnings</div>
+          <div class="info-data" id="profile-today-earning">$0.000</div>
+        </div>
+
+        <div class="profile-info-item">
+          <div class="info-title">Lifetime Earnings</div>
+          <div class="info-data" id="profile-lifetime-earning">$0.000</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="profile-section">
+        <div class="profile-section-title">
+          <i class="fas fa-users"></i>
+          <h3>Referral Program</h3>
+        </div>
+
+        <div class="profile-info-item">
+          <div class="info-title">Total Referrals</div>
+          <div class="info-data" id="profile-refer-count">0</div>
+        </div>
+
+        <div class="profile-info-item">
+          <div class="info-title">Referral Earnings</div>
+          <div class="info-data" id="profile-refer-earnings">$0.000</div>
+        </div>
+
+        <div class="profile-info-item">
+          <div class="info-title">Pending Referrals</div>
+          <div class="info-data" id="profile-pending-refs">0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="referral-section">
+      <div class="referral-header">
+        <i class="fas fa-share-alt"></i>
+        <h3>Share Your Referral Link</h3>
+      </div>
+
+      <div class="referral-content">
+        <p>Earn $0.50 for every friend who signs up using your referral link!</p>
+
+        <div class="referral-link">
+          <span id="profile-ref-link">Loading...</span>
+          <i class="fas fa-copy" onclick="copyReferralLink()"></i>
+        </div>
+
+        <button class="button" onclick="shareReferralLink()">
+          <i class="fas fa-share-alt"></i> Share Referral Link
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <div class="nav-item active" id="nav-home" onclick="show('home')">
+      <div class="nav-icon">
+        <i class="fas fa-home"></i>
+      </div>
+      <div class="nav-label">Home</div>
+    </div>
+    <div class="nav-item" id="nav-earn" onclick="show('earn')">
+      <div class="nav-icon">
+        <i class="fas fa-coins"></i>
+      </div>
+      <div class="nav-label">Earn</div>
+    </div>
+    <div class="nav-item" id="nav-withdraw" onclick="show('withdraw')">
+      <div class="nav-icon">
+        <i class="fas fa-wallet"></i>
+      </div>
+      <div class="nav-label">Withdraw</div>
+    </div>
+    <div class="nav-item" id="nav-profile" onclick="show('profile')">
+      <div class="nav-icon">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="nav-label">Profile</div>
+    </div>
+  </div>
+
+  <script>
+    // Telegram Bot API Configuration
+    const BOT_TOKEN = "7811173242:AAGeYgntYuB906-hMhovnk5PE_pxHbtgFhs";
+    const API_BASE_URL = `https://api.telegram.org/bot${BOT_TOKEN}`;
+
+    // Global variables
+    let userId = null;
+    let username = null;
+    let userData = null;
+    let data = null;
+
+    // Task links array
+    const taskLinks = [
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-1.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-2.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-3.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-4.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-5.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-1.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-2.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-3.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-4.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-5.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-1.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-2.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-3.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-4.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-5.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-1.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-2.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-3.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-4.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-5.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-1.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-2.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-3.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-4.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-5.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-1.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-2.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-3.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-4.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-5.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-1.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-2.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-3.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-4.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-5.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-1.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-2.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-3.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-4.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-5.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-1.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-2.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-3.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-4.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://daily-earning-5.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-1.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-2.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-3.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-4.vercel.app",
+      "https://premium-sm-offer.vercel.app",
+      "https://tomake-chai-vlona.vercel.app",
+      "https://free-5-bonus-5.vercel.app",
+    ];
+
+    // Task timer variables
+    let taskTimerInterval = null;
+    let taskStartTime = null;
+    let pendingTaskLink = null;
+    const REQUIRED_AD_TIME = 30; // seconds
+
+    // Initialize the app
+    async function initApp() {
+      try {
+        // Check if we're in Telegram environment
+        if (window.Telegram && window.Telegram.WebApp) {
+          await initTelegramUser();
+        } else {
+          // Fallback for testing outside Telegram
+          await initTestUser();
+        }
+
+        // Initialize user data
+        await loadUserData();
+
+        // Check for any pending task from previous session
+        checkPendingTask();
+
+        // Update display
+        updateDisplay();
+
+        // Check for referral parameter
+        checkReferral();
+
+        // Setup visibility change listener for task timer
+        setupVisibilityListener();
+
+      } catch (error) {
+        console.error("Error initializing app:", error);
+        showNotification("Error loading user data. Please try again.", "error");
+      }
+    }
+
+    // Setup visibility change listener
+    function setupVisibilityListener() {
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          // User came back to our app
+          const pendingTask = localStorage.getItem('pendingTask');
+          if (pendingTask) {
+            const taskData = JSON.parse(pendingTask);
+            const elapsedSeconds = (Date.now() - taskData.startTime) / 1000;
+            const remainingSeconds = Math.max(0, REQUIRED_AD_TIME - elapsedSeconds);
+
+            if (remainingSeconds <= 0) {
+              // Task should be completed
+              completeTask(taskData.linkIndex);
+            } else {
+              // Show remaining time
+              showCountdownBanner(Math.ceil(remainingSeconds));
+              // Restart countdown check
+              startTaskTimerCheck(taskData.startTime, taskData.linkIndex);
+            }
+          }
+        }
+      });
+    }
+
+    // Check for pending task from previous session
+    function checkPendingTask() {
+      const pendingTask = localStorage.getItem('pendingTask');
+      if (pendingTask) {
+        const taskData = JSON.parse(pendingTask);
+        const elapsedSeconds = (Date.now() - taskData.startTime) / 1000;
+
+        if (elapsedSeconds >= REQUIRED_AD_TIME) {
+          // Task time has passed, complete it
+          completeTask(taskData.linkIndex);
+        } else if (document.visibilityState === 'visible') {
+          // Still time remaining, show countdown
+          const remainingSeconds = Math.ceil(REQUIRED_AD_TIME - elapsedSeconds);
+          showCountdownBanner(remainingSeconds);
+          startTaskTimerCheck(taskData.startTime, taskData.linkIndex);
+        }
+      }
+    }
+
+    // Show countdown banner
+    function showCountdownBanner(seconds) {
+      const banner = document.getElementById('countdownBanner');
+      const timer = document.getElementById('countdownTimer');
+
+      banner.classList.add('show');
+      timer.textContent = seconds;
+
+      // Update timer every second
+      if (taskTimerInterval) clearInterval(taskTimerInterval);
+
+      taskTimerInterval = setInterval(() => {
+        const currentSeconds = parseInt(timer.textContent);
+        if (currentSeconds <= 1) {
+          timer.textContent = '0';
+          clearInterval(taskTimerInterval);
+          setTimeout(() => {
+            banner.classList.remove('show');
+          }, 1000);
+        } else {
+          timer.textContent = currentSeconds - 1;
+        }
+      }, 1000);
+    }
+
+    // Start task timer check
+    function startTaskTimerCheck(startTime, linkIndex) {
+      if (taskTimerInterval) clearInterval(taskTimerInterval);
+
+      taskTimerInterval = setInterval(() => {
+        const elapsedSeconds = (Date.now() - startTime) / 1000;
+        const remainingSeconds = Math.max(0, REQUIRED_AD_TIME - elapsedSeconds);
+
+        // Update countdown banner
+        const banner = document.getElementById('countdownBanner');
+        const timer = document.getElementById('countdownTimer');
+        if (banner.classList.contains('show')) {
+          timer.textContent = Math.ceil(remainingSeconds);
+        }
+
+        if (remainingSeconds <= 0) {
+          clearInterval(taskTimerInterval);
+          taskTimerInterval = null;
+          completeTask(linkIndex);
+        }
+      }, 500);
+    }
+
+    // Complete the task
+    function completeTask(linkIndex) {
+      // Clear pending task
+      localStorage.removeItem('pendingTask');
+
+      // Clear timer
+      if (taskTimerInterval) {
+        clearInterval(taskTimerInterval);
+        taskTimerInterval = null;
+      }
+
+      // Hide countdown banner
+      document.getElementById('countdownBanner').classList.remove('show');
+
+      // Check if task was already completed (prevent double counting)
+      if (taskStartTime === null && pendingTaskLink === null) {
+        // Task was already completed or no pending task
+        return;
+      }
+
+      // Reset task tracking variables
+      taskStartTime = null;
+      pendingTaskLink = null;
+
+      // Update task data
+      if (data.completed >= 150) {
+        showNotification("You have already completed all tasks for today!", "warning");
+        updateDisplay();
+        return;
+      }
+
+      data.completed++;
+      data.remaining = 150 - data.completed;
+      data.todaysEarning += 0.021;
+      userData.lifetimeEarning += 0.021;
+      userData.totalTasks++;
+
+      updateStorage();
+      updateDisplay();
+
+      // Check if referral should be activated
+      checkReferralActivation();
+
+      showNotification("✅ Task completed! $0.021 added to your balance.", "success");
+    }
+
+    // Initialize Telegram user
+    async function initTelegramUser() {
+      const tg = window.Telegram.WebApp;
+
+      // Expand the app to full height
+      tg.expand();
+
+      // Get user data from Telegram
+      const user = tg.initDataUnsafe.user;
+
+      if (user) {
+        userId = user.id;
+        username = user.username || `${user.first_name}${user.last_name ? ' ' + user.last_name : ''}`;
+
+        // Update profile picture if available
+        if (user.photo_url) {
+          document.getElementById("profile-picture").src = user.photo_url;
+        }
+
+        // Store user info in localStorage
+        localStorage.setItem("userId", userId);
+        localStorage.setItem("username", username);
+
+        console.log("Telegram user initialized:", { userId, username });
+      } else {
+        throw new Error("Could not get Telegram user data");
+      }
+    }
+
+    // Initialize test user (for development outside Telegram)
+    async function initTestUser() {
+      userId = localStorage.getItem("userId");
+      username = localStorage.getItem("username");
+
+      // If not stored, generate new values
+      if (!userId) {
+        userId = Math.floor(Math.random() * 1000000);
+        localStorage.setItem("userId", userId);
+      }
+
+      if (!username) {
+        username = "User" + userId;
+        localStorage.setItem("username", username);
+      }
+
+      console.log("Test user initialized:", { userId, username });
+    }
+
+    // Load user data from server
+    async function loadUserData() {
+      const today = new Date().toLocaleDateString();
+
+      try {
+        // Try to get user data from server
+        const response = await fetch(`${API_BASE_URL}/getUserData?user_id=${userId}`);
+
+        if (response.ok) {
+          const serverData = await response.json();
+          userData = serverData.result || {};
+
+          // If user doesn't exist on server, create them
+          if (!userData.userId) {
+            await createUserOnServer();
+          }
+        } else {
+          // If server request fails, use localStorage
+          await loadUserDataFromLocalStorage(today);
+        }
+      } catch (error) {
+        console.error("Error loading user data from server:", error);
+        // Fallback to localStorage
+        await loadUserDataFromLocalStorage(today);
+      }
+    }
+
+    // Load user data from localStorage (fallback)
+    async function loadUserDataFromLocalStorage(today) {
+      userData = JSON.parse(localStorage.getItem("MTEarningData")) || {
+        userId,
+        username,
+        referrals: 0,
+        referralEarnings: 0,
+        pendingReferrals: 0,
+        lifetimeEarning: 0,
+        withdrew: 0,
+        totalTasks: 0,
+        joinDate: new Date().toLocaleDateString()
+      };
+
+      data = JSON.parse(localStorage.getItem("dailyEarningData")) || {
+        date: today,
+        completed: 0,
+        remaining: 150,
+        todaysEarning: 0
+      };
+
+      if (data.date !== today) {
+        data = { date: today, completed: 0, remaining: 150, todaysEarning: 0 };
+      }
+    }
+
+    // Create user on server
+    async function createUserOnServer() {
+      userData = {
+        userId,
+        username,
+        referrals: 0,
+        referralEarnings: 0,
+        pendingReferrals: 0,
+        lifetimeEarning: 0,
+        withdrew: 0,
+        totalTasks: 0,
+        joinDate: new Date().toLocaleDateString()
+      };
+
+      // In a real implementation, you would send this to your server
+      localStorage.setItem("MTEarningData", JSON.stringify(userData));
+
+      const today = new Date().toLocaleDateString();
+      data = { date: today, completed: 0, remaining: 150, todaysEarning: 0 };
+      localStorage.setItem("dailyEarningData", JSON.stringify(data));
+    }
+
+    // Update user data on server
+    async function updateUserDataOnServer() {
+      try {
+        localStorage.setItem("MTEarningData", JSON.stringify(userData));
+        localStorage.setItem("dailyEarningData", JSON.stringify(data));
+      } catch (error) {
+        console.error("Error updating user data on server:", error);
+      }
+    }
+
+    // Check for referral parameter
+    function checkReferral() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const refParam = urlParams.get('start');
+
+      if (refParam && refParam.startsWith('ref_')) {
+        const referrerId = refParam.substring(4);
+
+        // Don't count self-referral
+        if (referrerId != userId) {
+          processReferral(referrerId);
+        }
+      }
+    }
+
+    // Process referral
+    async function processReferral(referrerId) {
+      try {
+        // Check if this user was already referred
+        const referredBy = localStorage.getItem("referredBy");
+
+        if (!referredBy) {
+          // Mark this user as referred
+          localStorage.setItem("referredBy", referrerId);
+
+          showNotification("You've been referred by a friend! Complete 1000 tasks to activate the referral.",
+            "success");
+        }
+      } catch (error) {
+        console.error("Error processing referral:", error);
+      }
+    }
+
+    // Check and activate referrals when user completes tasks
+    async function checkReferralActivation() {
+      const referredBy = localStorage.getItem("referredBy");
+
+      if (referredBy && userData.totalTasks >= 1000) {
+        try {
+          // Clear the referral marker
+          localStorage.removeItem("referredBy");
+
+          showNotification("Congratulations! Your referral has been activated.", "success");
+        } catch (error) {
+          console.error("Error activating referral:", error);
+        }
+      }
+    }
+
+    // Update storage
+    function updateStorage() {
+      updateUserDataOnServer();
+    }
+
+    function updateDisplay() {
+      // Update home screen
+      document.getElementById("username").innerText = username;
+      document.getElementById("user-id").innerText = userId;
+      document.getElementById("completed-card").innerText = data.completed;
+      document.getElementById("remaining-card").innerText = data.remaining;
+      document.getElementById("todays-earning").innerText = data.todaysEarning.toFixed(3);
+      document.getElementById("lifetime-earning").innerText = userData.lifetimeEarning.toFixed(3);
+      document.getElementById("available").innerText = userData.lifetimeEarning.toFixed(3);
+      document.getElementById("header-balance").innerText = "$" + userData.lifetimeEarning.toFixed(3);
+
+      // Update progress bar
+      const progressPercent = (data.completed / 150 * 100);
+      document.getElementById("progress-bar").style.width = progressPercent + "%";
+      document.getElementById("progress-percent").innerText = progressPercent.toFixed(0) + "%";
+
+      // Update profile stats
+      document.getElementById("total-earned").innerText = "$" + userData.lifetimeEarning.toFixed(3);
+      document.getElementById("tasks-completed").innerText = userData.totalTasks;
+
+      // Update referral section
+      document.getElementById("ref-earned").innerText = "$" + userData.referralEarnings.toFixed(2);
+      document.getElementById("referral-count").innerText = userData.referrals;
+      document.getElementById("ref-link").innerText =
+        `https://t.me/DailyEarning545_Bot?start=ref_${userId}`;
+
+      // Update profile page
+      document.getElementById("profile-username").innerText = username;
+      document.getElementById("profile-user-id").innerText = userId;
+      document.getElementById("profile-balance").innerText = "$" + userData.lifetimeEarning.toFixed(3);
+      document.getElementById("profile-withdrew").innerText = "$" + userData.withdrew.toFixed(3);
+      document.getElementById("profile-refer-count").innerText = userData.referrals;
+      document.getElementById("profile-refer-earnings").innerText = "$" + userData.referralEarnings.toFixed(3);
+      document.getElementById("profile-today-earning").innerText = "$" + data.todaysEarning.toFixed(3);
+      document.getElementById("profile-lifetime-earning").innerText = "$" + userData.lifetimeEarning.toFixed(3);
+      document.getElementById("join-date").innerText = userData.joinDate;
+      document.getElementById("profile-pending-refs").innerText = userData.pendingReferrals;
+      document.getElementById("profile-ref-link").innerText =
+        `https://t.me/DailyEarning545_Bot?start=ref_${userId}`;
+
+      // Update earn section
+      document.getElementById("ecompleted").innerText = data.completed;
+      document.getElementById("eremaining").innerText = data.remaining;
+      document.getElementById("earn-progress-bar").style.width = progressPercent + "%";
+      document.getElementById("earn-progress-percent").innerText = progressPercent.toFixed(0) + "%";
+
+      // Update task visualization
+      updateTaskVisualization();
+    }
+
+    function updateTaskVisualization() {
+      const homeVisual = document.getElementById("task-visual");
+      const earnVisual = document.getElementById("earn-task-visual");
+      homeVisual.innerHTML = "";
+      earnVisual.innerHTML = "";
+
+      // Create 100 dots (10 rows of 10)
+      for (let i = 0; i < 10; i++) {
+        const row = document.createElement("div");
+        row.style.display = "flex";
+        row.style.justifyContent = "center";
+        row.style.gap = "5px";
+        row.style.marginBottom = "5px";
+
+        for (let j = 0; j < 15; j++) {
+          const dot = document.createElement("div");
+          dot.className = "task-dot";
+          const index = i * 15 + j;
+
+          if (index < data.completed) {
+            dot.classList.add("completed");
+          }
+
+          row.appendChild(dot);
+        }
+
+        homeVisual.appendChild(row.cloneNode(true));
+        earnVisual.appendChild(row.cloneNode(true));
+      }
+    }
+
+    function showNotification(message, type) {
+      const notification = document.getElementById("notification");
+      const messageElement = document.getElementById("notification-message");
+
+      messageElement.textContent = message;
+      notification.className = "notification " + type;
+      notification.classList.add("show");
+
+      setTimeout(() => {
+        notification.classList.remove("show");
+      }, 3000);
+    }
+
+    // Main task function - Updated to use Telegram in-app browser
+    function startTask() {
+      // Check if there's already a pending task
+      const pendingTask = localStorage.getItem('pendingTask');
+      if (pendingTask) {
+        const taskData = JSON.parse(pendingTask);
+        const elapsedSeconds = (Date.now() - taskData.startTime) / 1000;
+        const remainingSeconds = Math.max(0, REQUIRED_AD_TIME - elapsedSeconds);
+
+        if (remainingSeconds > 0) {
+          showNotification(`⏳ Task already in progress! ${Math.ceil(remainingSeconds)} seconds remaining. Please wait...`,
+            "warning");
+          showCountdownBanner(Math.ceil(remainingSeconds));
+          return;
+        } else {
+          // Previous task time is up, complete it first
+          completeTask(taskData.linkIndex);
+          return;
+        }
+      }
+
+      // Check if all tasks are completed
+      if (data.completed >= 150) {
+        showNotification("You have completed all tasks for today!", "warning");
+        return;
+      }
+
+      // Get the ad link for current task
+      const linkIndex = data.completed % taskLinks.length;
+      const adLink = taskLinks[linkIndex];
+
+      // Record task start
+      const startTime = Date.now();
+      taskStartTime = startTime;
+      pendingTaskLink = adLink;
+
+      // Store pending task in localStorage for persistence
+      localStorage.setItem('pendingTask', JSON.stringify({
+        startTime: startTime,
+        linkIndex: linkIndex,
+        adLink: adLink
+      }));
+
+      // Show countdown banner
+      showCountdownBanner(REQUIRED_AD_TIME);
+
+      // Start timer check
+      startTaskTimerCheck(startTime, linkIndex);
+
+      // Open ad in Telegram's in-app browser if available
+      if (window.Telegram && window.Telegram.WebApp) {
+        try {
+          window.Telegram.WebApp.openLink(adLink);
+          showNotification("📢 Ad opened in Telegram browser. Stay for 30 seconds to earn $0.021!", "success");
+        } catch (e) {
+          console.error("Telegram openLink failed:", e);
+          // Fallback to window.open
+          const ad = window.open(adLink, "_blank");
+          if (!ad) {
+            showNotification("⚠️ Please allow popups and stay on the ad page for 30 seconds.", "warning");
+          }
+        }
+      } else {
+        // Non-Telegram environment fallback
+        const ad = window.open(adLink, "_blank");
+        if (!ad) {
+          showNotification("⚠️ Please allow popups and stay on the ad page for 30 seconds.", "warning");
+        }
+      }
+    }
+
+    function submitWithdrawal() {
+      const amount = parseFloat(document.getElementById("withdraw-amount").value);
+      const method = document.getElementById("withdraw-method").value;
+      const address = document.getElementById("withdraw-address").value;
+
+      if (isNaN(amount)) {
+        showNotification("Please enter a valid amount", "error");
+        return;
+      }
+      if (amount < 30) {
+        showNotification("Minimum withdrawal amount is $30", "error");
+        return;
+      }
+      if (amount > userData.lifetimeEarning) {
+        showNotification("Insufficient balance", "error");
+        return;
+      }
+      if (userData.referrals < 10) {
+        showNotification("You need at least 10 referrals to withdraw", "error");
+        return;
+      }
+      if (method === "Select a method") {
+        showNotification("Please select a withdrawal method", "error");
+        return;
+      }
+      if (!address) {
+        showNotification("Please enter your withdrawal address", "error");
+        return;
+      }
+
+      // Update balance
+      userData.lifetimeEarning -= amount;
+      userData.withdrew += amount;
+      updateStorage();
+      updateDisplay();
+      showNotification("Withdrawal request submitted successfully! It will be processed within 24-48 hours.", "success");
+    }
+
+    function show(section) {
+      // Hide all sections first
+      document.getElementById("home-profile").style.display = "none";
+      document.getElementById("home-content").style.display = "none";
+      document.getElementById("withdraw").style.display = "none";
+      document.getElementById("earn").style.display = "none";
+      document.getElementById("profile-page").style.display = "none";
+
+      // Show appropriate section
+      if (section === 'home') {
+        document.getElementById("home-profile").style.display = "block";
+        document.getElementById("home-content").style.display = "block";
+      } else if (section === 'withdraw') {
+        document.getElementById("withdraw").style.display = "block";
+      } else if (section === 'earn') {
+        document.getElementById("earn").style.display = "block";
+      } else if (section === 'profile') {
+        document.getElementById("profile-page").style.display = "block";
+      }
+
+      // Update navigation
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      document.getElementById("nav-" + section).classList.add('active');
+    }
+
+    function copyReferralLink() {
+      const refLink = `https://t.me/DailyEarning545_Bot?start=ref_${userId}`;
+      navigator.clipboard.writeText(refLink)
+        .then(() => showNotification("✅ Referral link copied! You earn $0.50 for each successful referral.", "success"))
+        .catch(() => showNotification("Failed to copy link", "error"));
+    }
+
+    function shareReferralLink() {
+      const refLink = `https://t.me/DailyEarning545_Bot?start=ref_${userId}`;
+
+      // Check if we're in a Telegram environment
+      if (window.Telegram && window.Telegram.WebApp) {
+        // Use Telegram's share functionality
+        window.Telegram.WebApp.share(refLink, { title: 'Earn with Daily Earning545' }, (success) => {
+          if (!success) {
+            // Fallback to copy if sharing fails
+            copyReferralLink();
+          }
+        });
+      } else if (navigator.share) {
+        // Use Web Share API for browsers that support it
+        navigator.share({
+            title: 'Earn with Daily Earning545',
+            text: 'Join Daily Earning545 and start earning money by completing simple tasks!',
+            url: refLink
+          })
+          .catch((error) => {
+            console.error('Sharing failed:', error);
+            copyReferralLink();
+          });
+      } else {
+        // Fallback to copying the link
+        copyReferralLink();
+      }
+    }
+
+    // Initialize the app when the page loads
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+
+  <script>
+    // Geo-blocking script
+    fetch("https://ipapi.co/json/")
+      .then(response => response.json())
+      .then(data => {
+        let country = data.country;
+        let timezone = data.timezone;
+
+        if ((country === "BD" && timezone === "Asia/Dhaka") ||
+          (country === "IN" && timezone === "Asia/Kolkata")) {
+          console.log("Access Allowed:", country, timezone);
+        } else {
+          document.body.innerHTML =
+            "<h2 style='color:red;text-align:center;'>❌ Access Denied ❌<br>Daily Earning545 Bot এ VPN দিয়ে কাজ করতে পারবে না। ⚠ আপনি যদি VPN ব‍্যবহার করেন, অনুগ্রহ করে VPN বন্ধ করে আবার চেষ্টা করুন ধন্যবাদ🌺</h2>";
+        }
+      })
+      .catch(error => {
+        console.error("Geo API Error:", error);
+      });
+  </script>
+
+  <!-- Welcome Message -->
+  <div class="welcome-toast" id="welcomeToast">
+    <div class="toast-content">
+      <div class="toast-header">
+        <div class="toast-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="toast-text">
+          <h3>স্বাগতম! 👋</h3>
+          <p>Daily Earning545 এ আপনার আয়ের যাত্রা শুভ হোক</p>
+        </div>
+        <button class="toast-close" onclick="closeWelcomeToast()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="toast-features">
+        <span class="feature-tag">💰 টাস্ক প্রতি $0.021</span>
+        <span class="feature-tag">👥 রেফার $0.50</span>
+        <span class="feature-tag">🚀 দৈনিক 150 টাস্ক</span>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .welcome-toast {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      max-width: 320px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      animation: slideInRight 0.5s ease-out;
+      border-left: 4px solid #4361ee;
+      overflow: hidden;
+    }
+
+    .toast-content {
+      padding: 0;
+    }
+
+    .toast-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 20px 20px 15px 20px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .toast-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #4361ee, #4cc9f0);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .toast-text {
+      flex: 1;
+    }
+
+    .toast-text h3 {
+      color: #1e293b;
+      margin: 0 0 5px 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .toast-text p {
+      color: #64748b;
+      margin: 0;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .toast-close {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .toast-close:hover {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+
+    .toast-features {
+      display: flex;
+      gap: 8px;
+      padding: 15px 20px 20px 20px;
+      flex-wrap: wrap;
+    }
+
+    .feature-tag {
+      background: rgba(67, 97, 238, 0.1);
+      color: #4361ee;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideOutRight {
+      from {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .welcome-toast {
+        top: 70px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+      }
+    }
+  </style>
+
+  <script>
+    function closeWelcomeToast() {
+      const toast = document.getElementById('welcomeToast');
+      toast.style.animation = 'slideOutRight 0.3s ease-out forwards';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 300);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const toast = document.getElementById('welcomeToast');
+      setTimeout(() => {
+        toast.style.display = 'block';
+      }, 1000);
+
+      setTimeout(() => {
+        if (toast.style.display !== 'none') {
+          closeWelcomeToast();
+        }
+      }, 8000);
+    });
+  </script>
 </body>
 </html>
