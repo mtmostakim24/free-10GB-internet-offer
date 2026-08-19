@@ -1,1769 +1,766 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Daily Earning545 | Premium Earning Platform</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://telegram.org/js/telegram-web-app.js">
-  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Viral Video Link - Premium Unlock System</title>
   <style>
+    /* ========== CSS RESET & BASE ========== */
+    :root {
+      --bg: #0a0e17;
+      --bg-card: #121a28;
+      --bg-card-hover: #182234;
+      --text: #ffffff;
+      --text-muted: #a0aab8;
+      --border: #2a3446;
+      --accent: #f59e0b;
+      --accent-hover: #d97706;
+      --green: #10b981;
+      --green-hover: #059669;
+      --red: #ef4444;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      --radius: 14px;
+      --radius-sm: 8px;
+      --transition: all 0.3s ease;
+      --font: 'Segoe UI', 'Noto Sans Bengali', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-    }
-
-    :root {
-      --primary: #4361ee;
-      --primary-dark: #3a56d4;
-      --secondary: #4cc9f0;
-      --success: #4ade80;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --dark: #1e293b;
-      --light: #f8fafc;
-      --card-bg: #ffffff;
-      --body-bg: #f1f5f9;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-      --transition: all 0.3s ease;
     }
 
     body {
-      background-color: var(--body-bg);
-      color: var(--dark);
-      padding-bottom: 80px;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
-      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ========== AD OVERLAY (Full Screen inside Bot) ========== */
-    .ad-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #0f172a;
-      z-index: 9999;
-      display: none;
-      flex-direction: column;
-      animation: fadeInOverlay 0.3s ease;
-    }
-    .ad-overlay.active {
-      display: flex;
-    }
-    @keyframes fadeInOverlay {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .ad-overlay-topbar {
+    /* ========== HEADER ========== */
+    .site-header {
+      background: #0d1420;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 16px;
-      background: #1e293b;
-      color: white;
+      flex-wrap: wrap;
       gap: 12px;
-      flex-shrink: 0;
-      border-bottom: 2px solid #f59e0b;
-    }
-    .ad-overlay-timer {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      background: rgba(245, 158, 11, 0.2);
-      padding: 8px 14px;
-      border-radius: 25px;
-      color: #fbbf24;
-      white-space: nowrap;
-    }
-    .ad-overlay-timer .seconds {
-      font-size: 1.4rem;
-      min-width: 30px;
-      text-align: center;
-      color: #f59e0b;
-    }
-    .ad-overlay-title {
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      text-align: center;
-      flex: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .ad-overlay-close {
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: #94a3b8;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.2s;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .ad-overlay-close.enabled {
-      background: #ef4444;
-      color: white;
-      animation: pulse 0.8s infinite;
-    }
-    @keyframes pulse {
-      0%,
-      100% {
-        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
-      }
-      50% {
-        box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
-      }
-    }
-
-    .ad-iframe-container {
-      flex: 1;
-      position: relative;
-      background: #fff;
-    }
-    .ad-iframe-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-    .ad-fallback {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-    .ad-fallback.active {
-      display: flex;
-    }
-    .ad-fallback-icon {
-      font-size: 4rem;
-      margin-bottom: 20px;
-      animation: bounce 1.5s infinite;
-    }
-    @keyframes bounce {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
-    }
-    .ad-fallback h3 {
-      font-size: 1.2rem;
-      margin-bottom: 8px;
-    }
-    .ad-fallback p {
-      color: #94a3b8;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-    }
-    .ad-fallback-url {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 10px 16px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: #fbbf24;
-      word-break: break-all;
-      max-width: 90%;
-    }
-    .ad-progress-bar-wrap {
-      height: 4px;
-      background: #334155;
-      flex-shrink: 0;
-    }
-    .ad-progress-bar-fill {
-      height: 100%;
-      background: linear-gradient(to right, #f59e0b, #fbbf24);
-      transition: width 0.5s linear;
-      width: 0%;
-    }
-
-    /* Countdown Banner (inside main app) */
-    .countdown-banner {
-      background: linear-gradient(135deg, #fff3cd, #ffe69c);
-      border: 2px solid #f59e0b;
-      color: #856404;
-      padding: 15px 20px;
-      border-radius: 15px;
-      margin: 15px;
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      font-weight: 600;
-      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
-    }
-    .countdown-banner.show {
-      display: flex;
-    }
-    .countdown-timer {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #d97706;
-      min-width: 50px;
-      text-align: center;
-    }
-
-    /* Header */
-    header {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: var(--shadow);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
-    header .title {
+    .logo {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: white;
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       font-weight: 700;
+      text-decoration: none;
+      color: #fff;
     }
-    header .title i {
-      font-size: 1.5rem;
-    }
-    header .balance-display {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 6px 12px;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      color: white;
-      font-weight: 600;
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 5px;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+    .nav a:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.05);
     }
 
-    /* Profile */
-    .profile-container {
-      position: relative;
-      padding: 20px 0 30px;
-      overflow: hidden;
-    }
-    .profile-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
+    /* ========== HERO SECTION ========== */
+    .hero {
       width: 100%;
-      height: 70%;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      z-index: 0;
-      border-radius: 0 0 30px 30px;
-    }
-    .profile {
-      position: relative;
-      z-index: 1;
+      max-width: 1200px;
+      margin: 24px auto 10px;
+      padding: 0 20px;
       text-align: center;
-      max-width: 500px;
+    }
+    .hero img {
+      width: 100%;
+      height: auto;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .hero img:hover {
+      transform: scale(1.01);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      margin: 20px 0 8px;
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 600px;
       margin: 0 auto;
+    }
+
+    /* ========== VIDEO GRID ========== */
+    .grid-container {
+      max-width: 1400px;
+      margin: 20px auto 40px;
       padding: 0 20px;
     }
-    .profile-header {
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    /* ========== VIDEO CARD ========== */
+    .video-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow);
+    }
+    .video-card:hover {
+      background: var(--bg-card-hover);
+      border-color: #3e4c63;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Ad slots (2 small ads above each card) */
+    .ad-slots {
+      display: flex;
+      gap: 8px;
+      padding: 10px 12px;
+      background: #0b111d;
+      border-bottom: 1px solid var(--border);
+    }
+    .ad-slot {
+      flex: 1;
+      height: 80px;
+      background: #0d1420;
+      border: 1.5px dashed #2a3446;
+      border-radius: 6px;
       display: flex;
       align-items: center;
-      gap: 15px;
-      background: white;
-      padding: 15px;
-      border-radius: 15px;
-      box-shadow: var(--shadow);
-      margin-bottom: 20px;
-    }
-    .profile-img-container {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
+      justify-content: center;
+      flex-direction: column;
+      font-size: 0.7rem;
+      color: #6b7a90;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
       overflow: hidden;
-      border: 3px solid rgba(67, 97, 238, 0.2);
-      box-shadow: var(--shadow);
+      padding: 4px;
+      text-align: center;
     }
-    .profile img {
+    .ad-slot:hover {
+      border-color: #4a5a78;
+      background: #0f1726;
+    }
+    .ad-slot .ad-label {
+      position: absolute;
+      top: 4px;
+      left: 6px;
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #4a5a78;
+    }
+    .ad-slot svg {
+      width: 18px;
+      height: 18px;
+      margin-bottom: 4px;
+      opacity: 0.5;
+    }
+
+    /* Thumbnail */
+    .thumb {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: #000;
+      cursor: pointer;
+    }
+    .thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
     }
-    .profile-info {
-      text-align: left;
-      flex: 1;
+    .thumb:hover img {
+      transform: scale(1.05);
     }
-    .name {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 5px;
-      color: var(--dark);
-    }
-    .user-id {
-      font-size: 0.85rem;
-      color: var(--primary);
-      background: rgba(67, 97, 238, 0.1);
-      padding: 3px 8px;
-      border-radius: 20px;
-      display: inline-block;
-    }
-    .stats-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .stat-card {
-      background: white;
-      border-radius: 12px;
-      padding: 15px 10px;
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-    .stat-value {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--primary);
-    }
-    .stat-label {
-      font-size: 0.8rem;
-      color: #666;
-      margin-top: 5px;
-    }
-
-    /* Cards */
-    .card {
-      background: var(--card-bg);
-      margin: 15px;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-    .card::before {
-      content: '';
+    .play-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      height: 5px;
-      width: 100%;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-    }
-    .card-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-      gap: 10px;
-    }
-    .card-header i {
-      width: 40px;
-      height: 40px;
-      background: rgba(67, 97, 238, 0.1);
-      border-radius: 12px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--primary);
-      font-size: 1.2rem;
+      border: 2px solid rgba(255,255,255,0.5);
+      pointer-events: none;
     }
-    .card-header h3 {
-      font-size: 1.1rem;
-      color: var(--dark);
+    .play-overlay svg {
+      width: 22px;
+      height: 22px;
+      fill: #fff;
+      margin-left: 3px;
     }
-    .card-content {
-      padding: 5px 0;
-    }
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-    .info-row:last-child {
-      border-bottom: none;
-    }
-    .info-label {
-      font-weight: 500;
-      color: #666;
-    }
-    .info-value {
-      font-weight: 700;
-      color: var(--dark);
-    }
-    .progress-container {
-      margin-top: 20px;
-    }
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    .progress {
-      height: 12px;
-      background: #e2e8f0;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      border-radius: 10px;
-      transition: var(--transition);
+    .duration {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.8);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      pointer-events: none;
     }
 
-    /* Profile Page */
-    #profile-page {
-      display: none;
-      padding: 20px;
-    }
-    .profile-card {
-      background: white;
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow: var(--shadow);
-      margin-bottom: 20px;
-    }
-    .profile-section {
-      margin-bottom: 25px;
-    }
-    .profile-section-title {
+    /* Card content */
+    .card-body {
+      padding: 14px 16px 16px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 10px;
-      margin-bottom: 15px;
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 1.1rem;
+      flex: 1;
     }
-    .profile-info-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .profile-info-item:last-child {
-      border-bottom: none;
-    }
-    .info-title {
-      color: #666;
-    }
-    .info-data {
-      font-weight: 600;
-      color: var(--dark);
-    }
-    .referral-section {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      color: white;
-      padding: 20px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-    }
-    .referral-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin: 20px 0;
-    }
-    .referral-stat {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 15px;
-      padding: 15px;
-      text-align: center;
-      backdrop-filter: blur(5px);
-    }
-    .referral-stat-value {
-      font-size: 1.5rem;
+    .video-title {
+      font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 5px;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 42px;
     }
-    .referral-stat-label {
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-    .referral-link {
-      background: white;
-      color: var(--primary);
-      padding: 15px;
-      border-radius: 15px;
-      font-weight: 500;
-      margin: 20px 0;
+    .video-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
       display: flex;
-      justify-content: space-between;
+      gap: 12px;
+    }
+    .video-meta span {
+      display: flex;
       align-items: center;
-      cursor: pointer;
+      gap: 4px;
     }
 
-    /* Buttons */
-    .button {
-      display: block;
-      width: 100%;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      color: white;
-      padding: 15px;
-      text-align: center;
-      border-radius: 15px;
-      margin-top: 15px;
-      font-weight: 600;
+    /* Unlock button */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
       cursor: pointer;
       transition: var(--transition);
-      box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
-      border: none;
-      font-size: 1rem;
+      letter-spacing: 0.3px;
+      width: 100%;
+      font-family: var(--font);
     }
-    .button:hover {
+    .btn-primary {
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    }
+    .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
     }
-    .button-secondary {
-      background: white;
-      color: var(--primary);
-      border: 2px solid var(--primary);
+    .btn-primary:disabled {
+      background: #2a3446;
+      color: #6b7a90;
+      cursor: not-allowed;
+      transform: none;
       box-shadow: none;
     }
-    .input-group {
-      margin-bottom: 15px;
+    .btn-success {
+      background: var(--green);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
     }
-    .input-group label {
+    .btn-success:hover {
+      background: var(--green-hover);
+      transform: translateY(-2px);
+    }
+    .btn-waiting {
+      background: #1e293b;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+    }
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: #1e293b;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 4px;
+      transition: width 1s linear;
+    }
+
+    /* Video player */
+    .player-container {
+      display: none;
+      margin-top: 10px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16/9;
+      border: 2px solid var(--green);
+    }
+    .player-container.active {
       display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-      color: var(--dark);
+      animation: fadeIn 0.5s;
     }
-    input,
-    select {
+    .player-container iframe {
       width: 100%;
-      padding: 14px;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      font-size: 1rem;
-      background: #f8fafc;
-      transition: var(--transition);
+      height: 100%;
+      border: none;
     }
-    input:focus,
-    select:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Navigation */
-    .nav {
+    /* Toast */
+    .toast {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      background: var(--card-bg);
-      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
-      padding: 10px 0;
-      z-index: 100;
-    }
-    .nav-item {
-      text-align: center;
-      font-size: 0.7rem;
-      cursor: pointer;
-      color: #666;
-      transition: var(--transition);
-      width: 70px;
-    }
-    .nav-icon {
-      width: 24px;
-      height: 24px;
-      margin: 0 auto 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f1f5f9;
-      border-radius: 10px;
-      padding: 12px;
-      transition: var(--transition);
-    }
-    .nav-item.active {
-      color: var(--primary);
-      font-weight: 600;
-    }
-    .nav-item.active .nav-icon {
-      background: rgba(67, 97, 238, 0.1);
-      color: var(--primary);
-    }
-    .nav-label {
-      font-size: 0.75rem;
-    }
-
-    /* Task Counter */
-    .task-counter {
-      display: flex;
-      justify-content: space-between;
-      margin: 20px 0;
-    }
-    .counter-item {
-      text-align: center;
-      background: #f8fafc;
-      border-radius: 15px;
-      padding: 15px;
-      flex: 1;
-      margin: 0 5px;
-    }
-    .counter-value {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--primary);
-    }
-    .counter-label {
-      font-size: 0.8rem;
-      color: #666;
-      margin-top: 5px;
-    }
-    .task-visualization {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin: 20px 0;
-    }
-    .task-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #e2e8f0;
-    }
-    .task-dot.completed {
-      background: var(--success);
-    }
-
-    /* Notification */
-    .notification {
-      position: fixed;
-      top: 20px;
+      bottom: 20px;
       right: 20px;
-      background: white;
-      padding: 15px 25px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background: #1e293b;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      z-index: 9999;
       transform: translateX(120%);
-      transition: transform 0.3s ease;
-      z-index: 10000;
+      transition: transform 0.4s ease;
       display: flex;
       align-items: center;
-      gap: 10px;
-      max-width: 90vw;
+      gap: 8px;
+      font-size: 0.9rem;
+      max-width: 350px;
     }
-    .notification.show {
+    .toast.show {
       transform: translateX(0);
     }
-    .notification.success {
-      border-left: 4px solid var(--success);
-    }
-    .notification.error {
-      border-left: 4px solid var(--danger);
-    }
-    .notification.warning {
-      border-left: 4px solid var(--warning);
-    }
+    .toast.success { border-left: 4px solid var(--green); }
+    .toast.error { border-left: 4px solid var(--red); }
 
-    /* Welcome Toast */
-    .welcome-toast {
-      position: fixed;
-      top: 80px;
-      right: 20px;
-      max-width: 320px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      z-index: 5000;
-      animation: slideInRight 0.5s ease-out;
-      border-left: 4px solid #4361ee;
-      overflow: hidden;
-      display: none;
-    }
-    .welcome-toast .toast-content {
-      padding: 0;
-    }
-    .welcome-toast .toast-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 20px 20px 15px 20px;
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    }
-    .welcome-toast .toast-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, #4361ee, #4cc9f0);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-    .welcome-toast .toast-text h3 {
-      color: #1e293b;
-      margin: 0 0 5px 0;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-    .welcome-toast .toast-text p {
-      color: #64748b;
-      margin: 0;
-      font-size: 0.85rem;
-    }
-    .welcome-toast .toast-close {
-      background: none;
-      border: none;
-      color: #94a3b8;
-      font-size: 1rem;
-      cursor: pointer;
-      padding: 5px;
-      border-radius: 6px;
-    }
-    .welcome-toast .toast-features {
-      display: flex;
-      gap: 8px;
-      padding: 15px 20px 20px 20px;
-      flex-wrap: wrap;
-    }
-    .welcome-toast .feature-tag {
-      background: rgba(67, 97, 238, 0.1);
-      color: #4361ee;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    @keyframes slideInRight {
-      from {
-        opacity: 0;
-        transform: translateX(100%);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    @keyframes slideOutRight {
-      from {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      to {
-        opacity: 0;
-        transform: translateX(100%);
-      }
-    }
-
-    /* Telegram proof button */
-    .telegram-proof-btn {
-      background: linear-gradient(135deg, #0088cc 0%, #00aced 100%) !important;
-      margin-top: 10px !important;
-    }
-    .youtube-guide-btn {
-      background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%) !important;
-      margin-top: 10px !important;
-      border: 2px solid #FF0000 !important;
-    }
-
-    @media (min-width: 768px) {
-      .cards-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        margin: 15px;
-      }
-      .card {
-        margin: 0;
-      }
-      .profile {
-        max-width: 600px;
-      }
-    }
-    @media (max-width: 480px) {
-      .welcome-toast {
-        top: 70px;
-        right: 10px;
-        left: 10px;
-        max-width: none;
-      }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.5rem; }
+      .video-grid { grid-template-columns: 1fr; }
+      .btn { font-size: 0.85rem; padding: 10px 12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ==================== AD OVERLAY (Inside Bot) ==================== -->
-  <div class="ad-overlay" id="adOverlay">
-    <div class="ad-overlay-topbar">
-      <div class="ad-overlay-timer">
-        <i class="fas fa-hourglass-half"></i>
-        <span class="seconds" id="adOverlaySeconds">30</span>
-        <span>sec</span>
-      </div>
-      <div class="ad-overlay-title">
-        <i class="fas fa-ad"></i> Viewing Ad - Earn $0.021
-      </div>
-      <button class="ad-overlay-close" id="adOverlayCloseBtn" onclick="handleAdOverlayClose()">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="ad-progress-bar-wrap">
-      <div class="ad-progress-bar-fill" id="adProgressFill"></div>
-    </div>
-    <div class="ad-iframe-container" id="adIframeContainer">
-      <iframe id="adIframe" src="" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-top-navigation" loading="lazy"></iframe>
-    </div>
-    <div class="ad-fallback" id="adFallback">
-      <div class="ad-fallback-icon">📢</div>
-      <h3>Ad is loading...</h3>
-      <p>Please wait <strong id="adFallbackSeconds">30</strong> seconds to earn $0.021</p>
-      <div class="ad-fallback-url" id="adFallbackUrl"></div>
-    </div>
-  </div>
-
-  <!-- ==================== MAIN APP ==================== -->
-  <div class="notification" id="notification">
-    <i class="fas fa-check-circle"></i>
-    <span id="notification-message"></span>
-  </div>
-
-  <div class="countdown-banner" id="countdownBanner">
-    <i class="fas fa-hourglass-half" style="font-size:1.5rem;"></i>
-    <span>⏳ Ad in progress -</span>
-    <span class="countdown-timer" id="countdownTimer">30</span>
-    <span>seconds remaining</span>
-  </div>
-
-  <header>
-    <div class="title">
-      <i class="fas fa-robot"></i>
-      <span>Daily Earning545</span>
-    </div>
-    <div class="balance-display">
-      <i class="fas fa-wallet"></i>
-      <span id="header-balance">$0.000</span>
-    </div>
+  <!-- Header -->
+  <header class="site-header">
+    <a href="#" class="logo">
+      <div class="logo-icon">▶</div>
+      <span>ViralHub</span>
+    </a>
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#videos">Videos</a>
+      <a href="#">Trending</a>
+      <a href="#">About</a>
+    </nav>
   </header>
 
-  <div class="profile-container" id="home-profile">
-    <div class="profile">
-      <div class="profile-header">
-        <div class="profile-img-container">
-          <img id="profile-picture" src="https://i.ibb.co/6R45cM6C/Polish-20250529-015530961.jpg" alt="Profile">
-        </div>
-        <div class="profile-info">
-          <div class="name" id="username">Loading...</div>
-          <div class="user-id">ID: <span id="user-id">Loading...</span></div>
-        </div>
-      </div>
-      <div class="stats-container">
-        <div class="stat-card">
-          <div class="stat-value" id="total-earned">$0.000</div>
-          <div class="stat-label">Total Earned</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value" id="tasks-completed">0</div>
-          <div class="stat-label">Tasks Done</div>
-        </div>
-      </div>
-    </div>
+  <!-- Hero Section with Image from imgbb -->
+  <div class="hero">
+    <!-- ⚠️ Replace the src below with your own i.ibb.co image link -->
+    <img src="https://i.ibb.co/0VzZ5yN/hero-banner.jpg" alt="Main Banner" />
+    <h1>🔥 All Viral Video Link</h1>
+    <p>Watch exclusive premium videos by unlocking them with a few simple ads. No annoying pop-ups – just 5 quick ad views per video!</p>
   </div>
 
-  <div class="cards-container" id="home-content">
-    <div class="card">
-      <div class="card-header"><i class="fas fa-tasks"></i><h3>Today's Tasks</h3></div>
-      <div class="card-content">
-        <div class="info-row"><span class="info-label">Total Tasks</span><span class="info-value" id="total">150</span></div>
-        <div class="info-row"><span class="info-label">Completed</span><span class="info-value" id="completed-card">0</span></div>
-        <div class="info-row"><span class="info-label">Remaining</span><span class="info-value" id="remaining-card">150</span></div>
-        <div class="progress-container">
-          <div class="progress-header"><span class="info-label">Task Progress</span><span class="info-value" id="progress-percent">0%</span></div>
-          <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
-        </div>
-        <div class="task-visualization" id="task-visual"></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header"><i class="fas fa-chart-line"></i><h3>Earnings</h3></div>
-      <div class="card-content">
-        <div class="info-row"><span class="info-label">Today's Earnings</span><span class="info-value">USD $<span id="todays-earning">0.000</span></span></div>
-        <div class="info-row"><span class="info-label">Lifetime Earnings</span><span class="info-value">USD $<span id="lifetime-earning">0.000</span></span></div>
-        <div class="info-row"><span class="info-label">Avg. per Task</span><span class="info-value">$0.021</span></div>
-      </div>
-    </div>
-    <div class="referral-section">
-      <div class="referral-header"><i class="fas fa-users"></i><h3>Refer & Earn</h3></div>
-      <div class="referral-content">
-        <p>Invite friends and earn $0.50 for each successful referral.</p>
-        <div class="referral-stats">
-          <div class="referral-stat"><div class="referral-stat-value" id="ref-earned">$0</div><div class="referral-stat-label">Referral Earnings</div></div>
-          <div class="referral-stat"><div class="referral-stat-value" id="referral-count">0</div><div class="referral-stat-label">Referrals</div></div>
-        </div>
-        <div class="referral-link"><span id="ref-link">Loading...</span><i class="fas fa-copy" onclick="copyReferralLink()"></i></div>
-        <button class="button" onclick="shareReferralLink()"><i class="fas fa-share-alt"></i> Share Referral Link</button>
-      </div>
-    </div>
-  </div>
+  <!-- Video Grid -->
+  <main class="grid-container" id="videos">
+    <div class="video-grid" id="videoGrid"></div>
+  </main>
 
-  <!-- Withdraw Section -->
-  <div class="card" id="withdraw" style="display:none;">
-    <div class="card-header"><i class="fas fa-money-bill-wave"></i><h3>Withdraw Funds</h3></div>
-    <div class="card-content">
-      <div class="info-row"><span class="info-label">Available Balance</span><span class="info-value">USD $<span id="available">0.000</span></span></div>
-      <div class="input-group"><label>Withdrawal Method</label><select id="withdraw-method"><option>Select a method</option><option>Bkash $30</option><option>Nagad $30</option><option>Payeer $50</option><option>USDT (TRC20) $50</option><option>Skrill $30</option><option>Neteller $30</option><option>Perfect Money $50</option></select></div>
-      <div class="input-group"><label>Amount (USD)</label><input type="text" id="withdraw-amount" placeholder="Enter amount"></div>
-      <div class="input-group"><label>Withdrawal Address</label><input type="text" id="withdraw-address" placeholder="Enter wallet address"></div>
-      <button class="button" onclick="submitWithdrawal()"><i class="fas fa-paper-plane"></i> Submit Withdrawal</button>
-    </div>
-    <button class="button telegram-proof-btn" onclick="window.open('https://t.me/Daily_Earning545_Bot','_blank')">
-      <div style="display:flex;align-items:center;justify-content:center;gap:10px;"><i class="fab fa-telegram" style="font-size:1.2rem;"></i><span>Daily Withdrawal Proof Channel</span></div>
-    </button>
-  </div>
-
-  <!-- Earn Section -->
-  <div id="earn" style="display:none;">
-    <div class="card">
-      <div class="card-header"><i class="fas fa-coins"></i><h3>Earn Money</h3></div>
-      <div class="card-content">
-        <p class="info-label" style="margin-bottom:20px;text-align:center;"><i class="fas fa-info-circle"></i> View ads inside the bot for 30 seconds to earn $0.021 per task!</p>
-        <div class="task-counter">
-          <div class="counter-item"><div class="counter-value" id="etotal">150</div><div class="counter-label">Total Tasks</div></div>
-          <div class="counter-item"><div class="counter-value" id="ecompleted">0</div><div class="counter-label">Completed</div></div>
-          <div class="counter-item"><div class="counter-value" id="eremaining">150</div><div class="counter-label">Remaining</div></div>
-        </div>
-        <div class="progress-container">
-          <div class="progress-header"><span class="info-label">Task Progress</span><span class="info-value" id="earn-progress-percent">0%</span></div>
-          <div class="progress"><div class="progress-bar" id="earn-progress-bar"></div></div>
-        </div>
-        <button class="button" id="startEarningBtn" onclick="startTask()"><i class="fas fa-play"></i> Start Earning ▶</button>
-      </div>
-      <button class="button youtube-guide-btn" onclick="window.open('https://t.me/howto_workthe_bot','_blank')">
-        <div style="display:flex;align-items:center;justify-content:center;gap:12px;"><div style="width:24px;height:24px;background:white;border-radius:4px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-youtube" style="font-size:1rem;color:#FF0000;"></i></div><span style="font-weight:600;">How to work the bot</span></div>
-      </button>
-    </div>
-    <div class="card">
-      <div class="card-header"><i class="fas fa-trophy"></i><h3>Task Completion</h3></div>
-      <div class="card-content"><div class="task-visualization" id="earn-task-visual"></div></div>
-    </div>
-  </div>
-
-  <!-- Profile Page -->
-  <div id="profile-page">
-    <div class="profile-card">
-      <div class="profile-section"><div class="profile-section-title"><i class="fas fa-user-circle"></i><h3>Account Information</h3></div>
-        <div class="profile-info-item"><div class="info-title">Username</div><div class="info-data" id="profile-username">Loading...</div></div>
-        <div class="profile-info-item"><div class="info-title">User ID</div><div class="info-data" id="profile-user-id">Loading...</div></div>
-        <div class="profile-info-item"><div class="info-title">Join Date</div><div class="info-data" id="join-date">Loading...</div></div>
-      </div>
-    </div>
-    <div class="profile-card">
-      <div class="profile-section"><div class="profile-section-title"><i class="fas fa-wallet"></i><h3>Financial Summary</h3></div>
-        <div class="profile-info-item"><div class="info-title">Current Balance</div><div class="info-data" id="profile-balance">$0.000</div></div>
-        <div class="profile-info-item"><div class="info-title">Total Withdrew</div><div class="info-data" id="profile-withdrew">$0.000</div></div>
-        <div class="profile-info-item"><div class="info-title">Today's Earnings</div><div class="info-data" id="profile-today-earning">$0.000</div></div>
-        <div class="profile-info-item"><div class="info-title">Lifetime Earnings</div><div class="info-data" id="profile-lifetime-earning">$0.000</div></div>
-      </div>
-    </div>
-    <div class="profile-card">
-      <div class="profile-section"><div class="profile-section-title"><i class="fas fa-users"></i><h3>Referral Program</h3></div>
-        <div class="profile-info-item"><div class="info-title">Total Referrals</div><div class="info-data" id="profile-refer-count">0</div></div>
-        <div class="profile-info-item"><div class="info-title">Referral Earnings</div><div class="info-data" id="profile-refer-earnings">$0.000</div></div>
-        <div class="profile-info-item"><div class="info-title">Pending Referrals</div><div class="info-data" id="profile-pending-refs">0</div></div>
-      </div>
-    </div>
-    <div class="referral-section">
-      <div class="referral-header"><i class="fas fa-share-alt"></i><h3>Share Your Referral Link</h3></div>
-      <div class="referral-content">
-        <p>Earn $0.50 for every friend who signs up!</p>
-        <div class="referral-link"><span id="profile-ref-link">Loading...</span><i class="fas fa-copy" onclick="copyReferralLink()"></i></div>
-        <button class="button" onclick="shareReferralLink()"><i class="fas fa-share-alt"></i> Share Referral Link</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navigation -->
-  <div class="nav">
-    <div class="nav-item active" id="nav-home" onclick="show('home')"><div class="nav-icon"><i class="fas fa-home"></i></div><div class="nav-label">Home</div></div>
-    <div class="nav-item" id="nav-earn" onclick="show('earn')"><div class="nav-icon"><i class="fas fa-coins"></i></div><div class="nav-label">Earn</div></div>
-    <div class="nav-item" id="nav-withdraw" onclick="show('withdraw')"><div class="nav-icon"><i class="fas fa-wallet"></i></div><div class="nav-label">Withdraw</div></div>
-    <div class="nav-item" id="nav-profile" onclick="show('profile')"><div class="nav-icon"><i class="fas fa-user"></i></div><div class="nav-label">Profile</div></div>
-  </div>
-
-  <!-- Welcome Toast -->
-  <div class="welcome-toast" id="welcomeToast">
-    <div class="toast-content">
-      <div class="toast-header">
-        <div class="toast-icon"><i class="fas fa-star"></i></div>
-        <div class="toast-text"><h3>স্বাগতম! 👋</h3><p>Daily Earning545 এ আপনার আয়ের যাত্রা শুভ হোক</p></div>
-        <button class="toast-close" onclick="closeWelcomeToast()"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="toast-features"><span class="feature-tag">💰 টাস্ক প্রতি $0.021</span><span class="feature-tag">👥 রেফার $0.50</span><span class="feature-tag">🚀 দৈনিক 150 টাস্ক</span></div>
-    </div>
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <span id="toastIcon">✅</span>
+    <span id="toastMessage"></span>
   </div>
 
   <script>
-    // ==================== CONFIGURATION ====================
-    const BOT_TOKEN = "7811173242:AAGeYgntYuB906-hMhovnk5PE_pxHbtgFhs";
-    const API_BASE_URL = `https://api.telegram.org/bot${BOT_TOKEN}`;
-    const REQUIRED_AD_TIME = 30; // seconds
+    // ============================================================
+    // CONFIGURATION - EDIT THESE VALUES
+    // ============================================================
 
-    // ==================== GLOBAL VARIABLES ====================
-    let userId = null;
-    let username = null;
-    let userData = null;
-    let data = null;
+    /**
+     * 🔴 ADSTERRA DIRECT LINK
+     * Replace with your own Adsterra direct link.
+     * Example: https://www.profitablecpmrate.com/xyz123
+     */
+    const ADSTERRA_LINK = "https://daily-earning-1.vercel.app";
 
-    // Ad overlay state
-    let adOverlayActive = false;
-    let adOverlayTimerInterval = null;
-    let adOverlayStartTime = null;
-    let adOverlayLinkIndex = null;
-    let adOverlaySecondsRemaining = REQUIRED_AD_TIME;
-    let adOverlayCompleted = false;
-    let adIframeLoaded = false;
-    let adIframeLoadTimeout = null;
+    /**
+     * 🔴 HERO IMAGE URL (i.ibb.co link)
+     * Replace with your actual image link from imgbb.
+     */
+    const HERO_IMAGE_URL = "https://i.ibb.co/0VzZ5yN/hero-banner.jpg";
 
-    // Task links
-    const taskLinks = [
-      "https://daily-earning.vercel.app",
-      "https://daily-earning.vercel.app",
-      "https://daily-earning.vercel.app",
-      "https://daily-earning.vercel.app",
-      "https://daily-earning.vercel.app",
-      "https://daily-earning.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-3.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-4.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-5.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-1.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-2.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-3.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-4.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-5.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-1.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-2.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-3.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-4.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-5.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-1.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-2.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-3.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-4.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-5.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-1.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-2.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-3.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-4.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-5.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-1.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-2.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-3.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-4.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-5.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-1.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-2.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-3.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-4.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-5.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-1.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-2.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-3.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-4.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-5.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-1.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-2.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-3.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-4.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://daily-earning-5.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-1.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-2.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-3.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-4.vercel.app",
-      "https://premium-sm-offer.vercel.app",
-      "https://tomake-chai-vlona.vercel.app",
-      "https://free-5-bonus-5.vercel.app",
+    /**
+     * ⏱️ Number of seconds user must wait after clicking before the ad counts as viewed.
+     * Set to 30 as requested.
+     */
+    const WAIT_SECONDS = 30;
+
+    /**
+     * 📢 Number of ad views required before video unlocks.
+     * Set to 5 as requested.
+     */
+    const ADS_REQUIRED = 5;
+
+    /**
+     * 🎬 Video data array.
+     * Replace thumbnail and embedUrl with your own.
+     * thumbnail: use i.ibb.co image links
+     * embedUrl: any embeddable video URL (YouTube embed, Vimeo, etc.)
+     */
+    const videos = [
+      {
+        id: 1,
+        title: "Viral Video #1: Amazing Street Magic",
+        thumbnail: "https://i.ibb.co/0VzZ5yN/hero-banner.jpg", // replace with actual imgbb link
+        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        duration: "12:45",
+        views: "2.3M views"
+      },
+      {
+        id: 2,
+        title: "Viral Video #2: Epic Fail Compilation",
+        thumbnail: "https://i.ibb.co/0VzZ5yN/hero-banner.jpg",
+        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        duration: "08:20",
+        views: "5.1M views"
+      },
+      {
+        id: 3,
+        title: "Viral Video #3: Cute Animals",
+        thumbnail: "https://i.ibb.co/0VzZ5yN/hero-banner.jpg",
+        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        duration: "05:10",
+        views: "10M views"
+      },
+      {
+        id: 4,
+        title: "Viral Video #4: Extreme Sports",
+        thumbnail: "https://i.ibb.co/0VzZ5yN/hero-banner.jpg",
+        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        duration: "15:30",
+        views: "1.8M views"
+      },
+      {
+        id: 5,
+        title: "Viral Video #5: Cooking Hacks",
+        thumbnail: "https://i.ibb.co/0VzZ5yN/hero-banner.jpg",
+        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        duration: "07:55",
+        views: "3.6M views"
+      },
+      {
+        id: 6,
+        title: "Viral Video #6: Travel Vlog",
+        thumbnail: "https://i.ibb.co/0VzZ5yN/hero-banner.jpg",
+        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        duration: "22:15",
+        views: "4.4M views"
+      },
+      {
+        id: 7,
+        title: "Viral Video #7: Tech Review",
+        thumbnail: "https://i.ibb.co/0VzZ5yN/hero-banner.jpg",
+        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        duration: "18:40",
+        views: "6.2M views"
+      },
+      {
+        id: 8,
+        title: "Viral Video #8: Comedy Skit",
+        thumbnail: "https://i.ibb.co/0VzZ5yN/hero-banner.jpg",
+        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        duration: "09:25",
+        views: "7.9M views"
+      }
     ];
 
-    // ==================== AD OVERLAY FUNCTIONS ====================
-    function openAdOverlay(adLink, linkIndex) {
-      if (adOverlayActive) return;
+    // ============================================================
+    // LOCAL STORAGE HELPERS
+    // ============================================================
+    const STORAGE_KEY = 'viralhub_ad_counts';
 
-      adOverlayActive = true;
-      adOverlayCompleted = false;
-      adOverlayStartTime = Date.now();
-      adOverlayLinkIndex = linkIndex;
-      adOverlaySecondsRemaining = REQUIRED_AD_TIME;
-      adIframeLoaded = false;
-
-      const overlay = document.getElementById('adOverlay');
-      const iframe = document.getElementById('adIframe');
-      const fallback = document.getElementById('adFallback');
-      const iframeContainer = document.getElementById('adIframeContainer');
-      const closeBtn = document.getElementById('adOverlayCloseBtn');
-      const secondsEl = document.getElementById('adOverlaySeconds');
-      const progressFill = document.getElementById('adProgressFill');
-      const fallbackUrl = document.getElementById('adFallbackUrl');
-      const fallbackSeconds = document.getElementById('adFallbackSeconds');
-
-      // Reset UI
-      overlay.classList.add('active');
-      iframeContainer.style.display = 'block';
-      fallback.classList.remove('active');
-      closeBtn.classList.remove('enabled');
-      closeBtn.title = 'Please wait 30 seconds';
-      secondsEl.textContent = REQUIRED_AD_TIME;
-      progressFill.style.width = '0%';
-      fallbackUrl.textContent = adLink;
-      fallbackSeconds.textContent = REQUIRED_AD_TIME;
-      document.body.style.overflow = 'hidden';
-
-      // Clear previous iframe timeout
-      if (adIframeLoadTimeout) clearTimeout(adIframeLoadTimeout);
-
-      // Try loading iframe
-      iframe.src = adLink;
-      iframe.style.display = 'block';
-
-      // If iframe doesn't load in 4 seconds, show fallback
-      adIframeLoadTimeout = setTimeout(() => {
-        if (!adIframeLoaded) {
-          iframeContainer.style.display = 'none';
-          fallback.classList.add('active');
-        }
-      }, 4000);
-
-      // Listen for iframe load
-      iframe.onload = function() {
-        adIframeLoaded = true;
-        if (adIframeLoadTimeout) clearTimeout(adIframeLoadTimeout);
-        iframeContainer.style.display = 'block';
-        fallback.classList.remove('active');
-      };
-
-      iframe.onerror = function() {
-        adIframeLoaded = false;
-        if (adIframeLoadTimeout) clearTimeout(adIframeLoadTimeout);
-        iframeContainer.style.display = 'none';
-        fallback.classList.add('active');
-      };
-
-      // Start the countdown timer
-      startAdOverlayTimer();
-
-      // Store pending task in localStorage
-      localStorage.setItem('pendingTask', JSON.stringify({
-        startTime: adOverlayStartTime,
-        linkIndex: linkIndex,
-        adLink: adLink
-      }));
-    }
-
-    function startAdOverlayTimer() {
-      if (adOverlayTimerInterval) clearInterval(adOverlayTimerInterval);
-
-      adOverlayTimerInterval = setInterval(() => {
-        const elapsed = (Date.now() - adOverlayStartTime) / 1000;
-        adOverlaySecondsRemaining = Math.max(0, REQUIRED_AD_TIME - elapsed);
-
-        // Update UI
-        document.getElementById('adOverlaySeconds').textContent = Math.ceil(adOverlaySecondsRemaining);
-        document.getElementById('adFallbackSeconds').textContent = Math.ceil(adOverlaySecondsRemaining);
-        const progressPercent = ((REQUIRED_AD_TIME - adOverlaySecondsRemaining) / REQUIRED_AD_TIME) * 100;
-        document.getElementById('adProgressFill').style.width = progressPercent + '%';
-
-        // Enable close button when time is up
-        if (adOverlaySecondsRemaining <= 0) {
-          document.getElementById('adOverlayCloseBtn').classList.add('enabled');
-          document.getElementById('adOverlayCloseBtn').title = 'Close & earn $0.021';
-        }
-
-        // Auto-complete when time is exactly up
-        if (adOverlaySecondsRemaining <= 0 && !adOverlayCompleted) {
-          adOverlayCompleted = true;
-          clearInterval(adOverlayTimerInterval);
-          adOverlayTimerInterval = null;
-
-          // Auto close after 1.5 seconds
-          setTimeout(() => {
-            completeAdTask();
-          }, 1500);
-        }
-      }, 200);
-    }
-
-    function handleAdOverlayClose() {
-      if (adOverlaySecondsRemaining > 0) {
-        // Not yet 30 seconds - warn user
-        showNotification(
-          `⏳ Please wait ${Math.ceil(adOverlaySecondsRemaining)} more seconds to earn $0.021!`,
-          "warning"
-        );
-        return;
-      }
-
-      // Time is up - complete the task
-      if (!adOverlayCompleted) {
-        adOverlayCompleted = true;
-        completeAdTask();
-      }
-    }
-
-    function completeAdTask() {
-      // Clear timer
-      if (adOverlayTimerInterval) {
-        clearInterval(adOverlayTimerInterval);
-        adOverlayTimerInterval = null;
-      }
-
-      // Close overlay
-      closeAdOverlay();
-
-      // Clear pending task
-      localStorage.removeItem('pendingTask');
-
-      // Update task data
-      if (data.completed >= 150) {
-        showNotification("You have already completed all tasks for today!", "warning");
-        updateDisplay();
-        return;
-      }
-
-      data.completed++;
-      data.remaining = 150 - data.completed;
-      data.todaysEarning += 0.021;
-      userData.lifetimeEarning += 0.021;
-      userData.totalTasks++;
-
-      updateStorage();
-      updateDisplay();
-      checkReferralActivation();
-
-      showNotification("✅ Task completed! $0.021 added to your balance.", "success");
-
-      // Reset state
-      adOverlayActive = false;
-      adOverlayCompleted = false;
-      adOverlayStartTime = null;
-      adOverlayLinkIndex = null;
-      adOverlaySecondsRemaining = REQUIRED_AD_TIME;
-      adIframeLoaded = false;
-    }
-
-    function closeAdOverlay() {
-      const overlay = document.getElementById('adOverlay');
-      const iframe = document.getElementById('adIframe');
-
-      if (adOverlayTimerInterval) {
-        clearInterval(adOverlayTimerInterval);
-        adOverlayTimerInterval = null;
-      }
-      if (adIframeLoadTimeout) {
-        clearTimeout(adIframeLoadTimeout);
-        adIframeLoadTimeout = null;
-      }
-
-      overlay.classList.remove('active');
-      iframe.src = 'about:blank';
-      document.body.style.overflow = '';
-      document.getElementById('adFallback').classList.remove('active');
-      document.getElementById('adIframeContainer').style.display = 'block';
-      document.getElementById('adOverlayCloseBtn').classList.remove('enabled');
-      document.getElementById('adProgressFill').style.width = '0%';
-      document.getElementById('adOverlaySeconds').textContent = REQUIRED_AD_TIME;
-    }
-
-    // ==================== APP INITIALIZATION ====================
-    async function initApp() {
+    function getAdCounts() {
       try {
-        if (window.Telegram && window.Telegram.WebApp) {
-          await initTelegramUser();
-        } else {
-          await initTestUser();
-        }
-        await loadUserData();
-        checkPendingTask();
-        updateDisplay();
-        checkReferral();
-        setupVisibilityListener();
-      } catch (error) {
-        console.error("Error initializing app:", error);
-        showNotification("Error loading user data. Please try again.", "error");
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      } catch {
+        return {};
       }
     }
 
-    function setupVisibilityListener() {
-      document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible' && adOverlayActive) {
-          // User came back - resume timer from stored start time
-          const elapsed = (Date.now() - adOverlayStartTime) / 1000;
-          adOverlaySecondsRemaining = Math.max(0, REQUIRED_AD_TIME - elapsed);
-          document.getElementById('adOverlaySeconds').textContent = Math.ceil(adOverlaySecondsRemaining);
-          document.getElementById('adFallbackSeconds').textContent = Math.ceil(adOverlaySecondsRemaining);
-          const progressPercent = ((REQUIRED_AD_TIME - adOverlaySecondsRemaining) / REQUIRED_AD_TIME) * 100;
-          document.getElementById('adProgressFill').style.width = progressPercent + '%';
-
-          if (adOverlaySecondsRemaining <= 0 && !adOverlayCompleted) {
-            adOverlayCompleted = true;
-            if (adOverlayTimerInterval) clearInterval(adOverlayTimerInterval);
-            adOverlayTimerInterval = null;
-            setTimeout(() => completeAdTask(), 1000);
-          } else if (!adOverlayTimerInterval && adOverlaySecondsRemaining > 0) {
-            startAdOverlayTimer();
-          }
-        }
-      });
+    function saveAdCount(videoId, count) {
+      const counts = getAdCounts();
+      counts[videoId] = count;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(counts));
     }
 
-    function checkPendingTask() {
-      const pendingTask = localStorage.getItem('pendingTask');
-      if (pendingTask) {
-        const taskData = JSON.parse(pendingTask);
-        const elapsedSeconds = (Date.now() - taskData.startTime) / 1000;
-        const remainingSeconds = Math.max(0, REQUIRED_AD_TIME - elapsedSeconds);
-
-        if (remainingSeconds <= 0) {
-          // Task should already be completed
-          localStorage.removeItem('pendingTask');
-          if (data.completed < 150) {
-            data.completed++;
-            data.remaining = 150 - data.completed;
-            data.todaysEarning += 0.021;
-            userData.lifetimeEarning += 0.021;
-            userData.totalTasks++;
-            updateStorage();
-            updateDisplay();
-            checkReferralActivation();
-            showNotification("✅ Previous task completed! $0.021 added.", "success");
-          }
-        } else {
-          // Resume the ad overlay
-          openAdOverlay(taskData.adLink, taskData.linkIndex);
-          adOverlayStartTime = taskData.startTime;
-          adOverlaySecondsRemaining = remainingSeconds;
-          document.getElementById('adOverlaySeconds').textContent = Math.ceil(remainingSeconds);
-          document.getElementById('adFallbackSeconds').textContent = Math.ceil(remainingSeconds);
-        }
-      }
+    function getAdCount(videoId) {
+      return getAdCounts()[videoId] || 0;
     }
 
-    async function initTelegramUser() {
-      const tg = window.Telegram.WebApp;
-      tg.expand();
-      const user = tg.initDataUnsafe.user;
-      if (user) {
-        userId = user.id;
-        username = user.username || `${user.first_name}${user.last_name ? ' ' + user.last_name : ''}`;
-        if (user.photo_url) document.getElementById("profile-picture").src = user.photo_url;
-        localStorage.setItem("userId", userId);
-        localStorage.setItem("username", username);
-      } else {
-        throw new Error("Could not get Telegram user data");
-      }
+    // ============================================================
+    // TOAST
+    // ============================================================
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const icon = document.getElementById('toastIcon');
+      const msg = document.getElementById('toastMessage');
+      icon.textContent = type === 'success' ? '✅' : '⚠️';
+      msg.textContent = message;
+      toast.classList.remove('success', 'error');
+      toast.classList.add(type);
+      toast.classList.add('show');
+      clearTimeout(toast._timeout);
+      toast._timeout = setTimeout(() => toast.classList.remove('show'), 3500);
     }
 
-    async function initTestUser() {
-      userId = localStorage.getItem("userId");
-      username = localStorage.getItem("username");
-      if (!userId) { userId = Math.floor(Math.random() * 1000000);
-        localStorage.setItem("userId", userId); }
-      if (!username) { username = "User" + userId;
-        localStorage.setItem("username", username); }
+    // ============================================================
+    // RENDER VIDEOS
+    // ============================================================
+    function renderVideos() {
+      const grid = document.getElementById('videoGrid');
+      grid.innerHTML = videos.map(v => {
+        const adCount = getAdCount(v.id);
+        const isUnlocked = adCount >= ADS_REQUIRED;
+        const buttonText = isUnlocked ? 'Open Video' : 'Unlock Video';
+        const buttonClass = isUnlocked ? 'btn btn-success' : 'btn btn-primary';
+        const progressPercent = Math.min((adCount / ADS_REQUIRED) * 100, 100);
+
+        return `
+          <div class="video-card" data-id="${v.id}">
+            <!-- 2 small ad slots -->
+            <div class="ad-slots">
+              <div class="ad-slot">
+                <span class="ad-label">AD 1</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                <span>Paste Adsterra code</span>
+              </div>
+              <div class="ad-slot">
+                <span class="ad-label">AD 2</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                <span>Paste Adsterra code</span>
+              </div>
+            </div>
+
+            <!-- Thumbnail -->
+            <div class="thumb">
+              <img src="${v.thumbnail}" alt="${v.title}" loading="lazy" />
+              <div class="play-overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="duration">${v.duration}</span>
+            </div>
+
+            <!-- Card body -->
+            <div class="card-body">
+              <div class="video-title">${v.title}</div>
+              <div class="video-meta">
+                <span>👁️ ${v.views}</span>
+                <span>⏱️ ${v.duration}</span>
+                <span class="ad-progress">📢 ${adCount}/${ADS_REQUIRED} ads viewed</span>
+              </div>
+
+              <!-- Progress bar -->
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: ${progressPercent}%"></div>
+              </div>
+
+              <!-- Button -->
+              <button class="${buttonClass}" data-id="${v.id}" ${isUnlocked ? '' : ''}>
+                ${isUnlocked ? '▶️ Open Video' : '🔓 ' + buttonText}
+              </button>
+
+              <!-- Player (hidden until unlocked) -->
+              <div class="player-container ${isUnlocked ? 'active' : ''}">
+                <iframe src="${isUnlocked ? v.embedUrl : 'about:blank'}" 
+                        title="${v.title}" 
+                        allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
 
-    async function loadUserData() {
-      const today = new Date().toLocaleDateString();
-      try {
-        const response = await fetch(`${API_BASE_URL}/getUserData?user_id=${userId}`);
-        if (response.ok) {
-          const serverData = await response.json();
-          userData = serverData.result || {};
-          if (!userData.userId) await createUserOnServer();
-        } else {
-          await loadUserDataFromLocalStorage(today);
-        }
-      } catch (error) {
-        await loadUserDataFromLocalStorage(today);
-      }
-    }
+    // ============================================================
+    // UNLOCK FLOW
+    // ============================================================
+    function handleButtonClick(e) {
+      const btn = e.target.closest('.btn');
+      if (!btn) return;
+      const videoId = parseInt(btn.getAttribute('data-id'));
+      const video = videos.find(v => v.id === videoId);
+      if (!video) return;
 
-    async function loadUserDataFromLocalStorage(today) {
-      userData = JSON.parse(localStorage.getItem("MTEarningData")) || {
-        userId,
-        username,
-        referrals: 0,
-        referralEarnings: 0,
-        pendingReferrals: 0,
-        lifetimeEarning: 0,
-        withdrew: 0,
-        totalTasks: 0,
-        joinDate: new Date().toLocaleDateString()
-      };
-      data = JSON.parse(localStorage.getItem("dailyEarningData")) || {
-        date: today,
-        completed: 0,
-        remaining: 150,
-        todaysEarning: 0
-      };
-      if (data.date !== today) { data = { date: today, completed: 0, remaining: 150, todaysEarning: 0 }; }
-    }
+      const adCount = getAdCount(videoId);
+      const card = btn.closest('.video-card');
 
-    async function createUserOnServer() {
-      userData = {
-        userId,
-        username,
-        referrals: 0,
-        referralEarnings: 0,
-        pendingReferrals: 0,
-        lifetimeEarning: 0,
-        withdrew: 0,
-        totalTasks: 0,
-        joinDate: new Date().toLocaleDateString()
-      };
-      localStorage.setItem("MTEarningData", JSON.stringify(userData));
-      const today = new Date().toLocaleDateString();
-      data = { date: today, completed: 0, remaining: 150, todaysEarning: 0 };
-      localStorage.setItem("dailyEarningData", JSON.stringify(data));
-    }
-
-    function updateStorage() {
-      localStorage.setItem("MTEarningData", JSON.stringify(userData));
-      localStorage.setItem("dailyEarningData", JSON.stringify(data));
-    }
-
-    function checkReferral() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const refParam = urlParams.get('start');
-      if (refParam && refParam.startsWith('ref_')) {
-        const referrerId = refParam.substring(4);
-        if (referrerId != userId) processReferral(referrerId);
-      }
-    }
-
-    async function processReferral(referrerId) {
-      const referredBy = localStorage.getItem("referredBy");
-      if (!referredBy) {
-        localStorage.setItem("referredBy", referrerId);
-        showNotification("You've been referred! Complete 1000 tasks to activate.", "success");
-      }
-    }
-
-    async function checkReferralActivation() {
-      const referredBy = localStorage.getItem("referredBy");
-      if (referredBy && userData.totalTasks >= 1000) {
-        localStorage.removeItem("referredBy");
-        showNotification("Congratulations! Your referral has been activated.", "success");
-      }
-    }
-
-    function updateDisplay() {
-      document.getElementById("username").innerText = username;
-      document.getElementById("user-id").innerText = userId;
-      document.getElementById("completed-card").innerText = data.completed;
-      document.getElementById("remaining-card").innerText = data.remaining;
-      document.getElementById("todays-earning").innerText = data.todaysEarning.toFixed(3);
-      document.getElementById("lifetime-earning").innerText = userData.lifetimeEarning.toFixed(3);
-      document.getElementById("available").innerText = userData.lifetimeEarning.toFixed(3);
-      document.getElementById("header-balance").innerText = "$" + userData.lifetimeEarning.toFixed(3);
-      const progressPercent = (data.completed / 150 * 100);
-      document.getElementById("progress-bar").style.width = progressPercent + "%";
-      document.getElementById("progress-percent").innerText = progressPercent.toFixed(0) + "%";
-      document.getElementById("total-earned").innerText = "$" + userData.lifetimeEarning.toFixed(3);
-      document.getElementById("tasks-completed").innerText = userData.totalTasks;
-      document.getElementById("ref-earned").innerText = "$" + userData.referralEarnings.toFixed(2);
-      document.getElementById("referral-count").innerText = userData.referrals;
-      document.getElementById("ref-link").innerText = `https://t.me/DailyEarning545_Bot?start=ref_${userId}`;
-      document.getElementById("profile-username").innerText = username;
-      document.getElementById("profile-user-id").innerText = userId;
-      document.getElementById("profile-balance").innerText = "$" + userData.lifetimeEarning.toFixed(3);
-      document.getElementById("profile-withdrew").innerText = "$" + userData.withdrew.toFixed(3);
-      document.getElementById("profile-refer-count").innerText = userData.referrals;
-      document.getElementById("profile-refer-earnings").innerText = "$" + userData.referralEarnings.toFixed(3);
-      document.getElementById("profile-today-earning").innerText = "$" + data.todaysEarning.toFixed(3);
-      document.getElementById("profile-lifetime-earning").innerText = "$" + userData.lifetimeEarning.toFixed(3);
-      document.getElementById("join-date").innerText = userData.joinDate;
-      document.getElementById("profile-pending-refs").innerText = userData.pendingReferrals;
-      document.getElementById("profile-ref-link").innerText = `https://t.me/DailyEarning545_Bot?start=ref_${userId}`;
-      document.getElementById("ecompleted").innerText = data.completed;
-      document.getElementById("eremaining").innerText = data.remaining;
-      document.getElementById("earn-progress-bar").style.width = progressPercent + "%";
-      document.getElementById("earn-progress-percent").innerText = progressPercent.toFixed(0) + "%";
-      updateTaskVisualization();
-    }
-
-    function updateTaskVisualization() {
-      const homeVisual = document.getElementById("task-visual");
-      const earnVisual = document.getElementById("earn-task-visual");
-      homeVisual.innerHTML = "";
-      earnVisual.innerHTML = "";
-      for (let i = 0; i < 10; i++) {
-        const row = document.createElement("div");
-        row.style.display = "flex";
-        row.style.justifyContent = "center";
-        row.style.gap = "5px";
-        row.style.marginBottom = "5px";
-        for (let j = 0; j < 15; j++) {
-          const dot = document.createElement("div");
-          dot.className = "task-dot";
-          if (i * 15 + j < data.completed) dot.classList.add("completed");
-          row.appendChild(dot);
-        }
-        homeVisual.appendChild(row.cloneNode(true));
-        earnVisual.appendChild(row.cloneNode(true));
-      }
-    }
-
-    function showNotification(message, type) {
-      const notification = document.getElementById("notification");
-      const messageElement = document.getElementById("notification-message");
-      messageElement.textContent = message;
-      notification.className = "notification " + type;
-      notification.classList.add("show");
-      setTimeout(() => notification.classList.remove("show"), 3000);
-    }
-
-    // ==================== MAIN TASK FUNCTION ====================
-    function startTask() {
-      // Check pending task
-      const pendingTask = localStorage.getItem('pendingTask');
-      if (pendingTask) {
-        const taskData = JSON.parse(pendingTask);
-        const elapsedSeconds = (Date.now() - taskData.startTime) / 1000;
-        const remainingSeconds = Math.max(0, REQUIRED_AD_TIME - elapsedSeconds);
-        if (remainingSeconds > 0) {
-          showNotification(`⏳ Task in progress! ${Math.ceil(remainingSeconds)}s remaining.`, "warning");
-          if (!adOverlayActive) openAdOverlay(taskData.adLink, taskData.linkIndex);
-          return;
-        } else {
-          localStorage.removeItem('pendingTask');
-          if (data.completed < 150) {
-            data.completed++;
-            data.remaining = 150 - data.completed;
-            data.todaysEarning += 0.021;
-            userData.lifetimeEarning += 0.021;
-            userData.totalTasks++;
-            updateStorage();
-            updateDisplay();
-            checkReferralActivation();
-            showNotification("✅ Previous task completed! $0.021 added.", "success");
-          }
-          return;
-        }
-      }
-
-      if (data.completed >= 150) {
-        showNotification("You have completed all tasks for today!", "warning");
+      // If already unlocked, show player (already visible) - do nothing
+      if (adCount >= ADS_REQUIRED) {
+        const player = card.querySelector('.player-container');
+        if (player) player.classList.add('active');
         return;
       }
 
-      const linkIndex = data.completed % taskLinks.length;
-      const adLink = taskLinks[linkIndex];
+      // If button is in waiting state (disabled), ignore
+      if (btn.disabled) return;
 
-      // Open the ad INSIDE the bot using the overlay
-      openAdOverlay(adLink, linkIndex);
-      showNotification("📢 Ad opened inside bot. Stay for 30 seconds to earn $0.021!", "success");
-    }
+      // Disable button and start countdown
+      btn.disabled = true;
+      btn.classList.remove('btn-primary');
+      btn.classList.add('btn-waiting');
+      btn.innerHTML = `⏳ Wait ${WAIT_SECONDS}s...`;
 
-    function submitWithdrawal() {
-      const amount = parseFloat(document.getElementById("withdraw-amount").value);
-      const method = document.getElementById("withdraw-method").value;
-      const address = document.getElementById("withdraw-address").value;
-      if (isNaN(amount)) { showNotification("Please enter a valid amount", "error"); return; }
-      if (amount < 0.030) { showNotification("Minimum withdrawal amount is $30", "error"); return; }
-      if (amount > userData.lifetimeEarning) { showNotification("Insufficient balance", "error"); return; }
-      if (userData.referrals < 10) { showNotification("You need at least 10 referrals to withdraw", "error"); return; }
-      if (method === "Select a method") { showNotification("Please select a withdrawal method", "error"); return; }
-      if (!address) { showNotification("Please enter your withdrawal address", "error"); return; }
-      userData.lifetimeEarning -= amount;
-      userData.withdrew += amount;
-      updateStorage();
-      updateDisplay();
-      showNotification("Withdrawal request submitted! Processed within 24-48 hours.", "success");
-    }
-
-    function show(section) {
-      document.getElementById("home-profile").style.display = "none";
-      document.getElementById("home-content").style.display = "none";
-      document.getElementById("withdraw").style.display = "none";
-      document.getElementById("earn").style.display = "none";
-      document.getElementById("profile-page").style.display = "none";
-      if (section === 'home') {
-        document.getElementById("home-profile").style.display = "block";
-        document.getElementById("home-content").style.display = "block";
-      } else if (section === 'withdraw') {
-        document.getElementById("withdraw").style.display = "block";
-      } else if (section === 'earn') {
-        document.getElementById("earn").style.display = "block";
-      } else if (section === 'profile') {
-        document.getElementById("profile-page").style.display = "block";
-      }
-      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-      document.getElementById("nav-" + section).classList.add('active');
-    }
-
-    function copyReferralLink() {
-      const refLink = `https://t.me/DailyEarning545_Bot?start=ref_${userId}`;
-      navigator.clipboard.writeText(refLink)
-        .then(() => showNotification("✅ Referral link copied!", "success"))
-        .catch(() => showNotification("Failed to copy link", "error"));
-    }
-
-    function shareReferralLink() {
-      const refLink = `https://t.me/DailyEarning545_Bot?start=ref_${userId}`;
-      if (window.Telegram && window.Telegram.WebApp) {
-        window.Telegram.WebApp.share(refLink, { title: 'Earn with Daily Earning545' }, (success) => {
-          if (!success) copyReferralLink();
-        });
-      } else if (navigator.share) {
-        navigator.share({ title: 'Earn with Daily Earning545', text: 'Join and earn!', url: refLink })
-          .catch(() => copyReferralLink());
+      // Open Adsterra link in new tab
+      if (ADSTERRA_LINK && ADSTERRA_LINK !== "https://www.profitablecpmrate.com/YOUR_DIRECT_LINK_HERE") {
+        window.open(ADSTERRA_LINK, '_blank', 'noopener,noreferrer');
+        showToast('📢 Ad opened in new tab. Please wait...', 'success');
       } else {
-        copyReferralLink();
+        console.warn('⚠️ Adsterra link not set. Please configure ADSTERRA_LINK.');
+        showToast('⚠️ Adsterra link missing!', 'error');
       }
-    }
 
-    function closeWelcomeToast() {
-      const toast = document.getElementById('welcomeToast');
-      toast.style.animation = 'slideOutRight 0.3s ease-out forwards';
-      setTimeout(() => { toast.style.display = 'none'; }, 300);
-    }
-
-    // ==================== GEO-BLOCKING ====================
-    fetch("https://ipapi.co/json/")
-      .then(response => response.json())
-      .then(geoData => {
-        if ((geoData.country === "BD" && geoData.timezone === "Asia/Dhaka") ||
-          (geoData.country === "IN" && geoData.timezone === "Asia/Kolkata")) {
-          console.log("Access Allowed:", geoData.country, geoData.timezone);
+      // Countdown timer
+      let secondsLeft = WAIT_SECONDS;
+      const countdownInterval = setInterval(() => {
+        secondsLeft--;
+        if (secondsLeft > 0) {
+          btn.innerHTML = `⏳ Wait ${secondsLeft}s...`;
         } else {
-          document.body.innerHTML =
-            "<h2 style='color:red;text-align:center;padding:40px;'>❌ Access Denied ❌<br>Daily Earning545 Bot এ VPN দিয়ে কাজ করতে পারবে না। ⚠ VPN বন্ধ করে আবার চেষ্টা করুন।</h2>";
-        }
-      })
-      .catch(error => console.error("Geo API Error:", error));
+          clearInterval(countdownInterval);
+          // Increment ad count
+          const newCount = adCount + 1;
+          saveAdCount(videoId, newCount);
 
-    // ==================== WELCOME TOAST ====================
-    document.addEventListener('DOMContentLoaded', function() {
-      const toast = document.getElementById('welcomeToast');
-      setTimeout(() => { toast.style.display = 'block'; }, 1000);
-      setTimeout(() => { if (toast.style.display !== 'none') closeWelcomeToast(); }, 8000);
+          if (newCount >= ADS_REQUIRED) {
+            // Unlocked!
+            btn.classList.remove('btn-waiting');
+            btn.classList.add('btn-success');
+            btn.disabled = false;
+            btn.innerHTML = '▶️ Open Video';
+            // Show player
+            const player = card.querySelector('.player-container');
+            if (player) {
+              player.classList.add('active');
+              player.querySelector('iframe').src = video.embedUrl;
+            }
+            showToast('🎉 Video unlocked! Enjoy!', 'success');
+          } else {
+            // Still more ads needed
+            btn.classList.remove('btn-waiting');
+            btn.classList.add('btn-primary');
+            btn.disabled = false;
+            btn.innerHTML = `🔓 Watch Ad ${newCount+1}/${ADS_REQUIRED}`;
+            showToast(`✅ Ad ${newCount}/${ADS_REQUIRED} viewed. ${ADS_REQUIRED-newCount} more to unlock.`, 'success');
+          }
+          // Update progress bar
+          const progressFill = card.querySelector('.progress-fill');
+          if (progressFill) {
+            progressFill.style.width = `${Math.min((newCount / ADS_REQUIRED) * 100, 100)}%`;
+          }
+          const adProgress = card.querySelector('.ad-progress');
+          if (adProgress) {
+            adProgress.textContent = `📢 ${newCount}/${ADS_REQUIRED} ads viewed`;
+          }
+        }
+      }, 1000);
+    }
+
+    // ============================================================
+    // EVENT DELEGATION
+    // ============================================================
+    document.getElementById('videoGrid').addEventListener('click', handleButtonClick);
+
+    // ============================================================
+    // INIT
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set hero image from config
+      const heroImg = document.querySelector('.hero img');
+      if (heroImg && HERO_IMAGE_URL) heroImg.src = HERO_IMAGE_URL;
+      renderVideos();
     });
-
-    // ==================== START APP ====================
-    window.addEventListener('DOMContentLoaded', initApp);
   </script>
 </body>
 </html>
